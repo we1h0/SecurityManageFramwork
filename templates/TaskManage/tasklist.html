@@ -1,0 +1,141 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">任务管理</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div class="x-body">
+	<div class="layui-row  ">
+		<div class='layui-col-md8'>
+	       <form class="layui-form layui-col-md12 x-so">
+				<input class="layui-input" placeholder="任务名称" name="name" id="id_name">
+				<input class="layui-input" placeholder="资产标识" name="key" id="id_key">
+				<div class="layui-input-inline">
+		           <select name="contrller" id ='id_type'>
+		              <option value="">任务类型</option>
+		              <option value="安全扫描">安全扫描</option>
+		              <option value="结果同步">结果同步</option>
+		            </select>
+		        </div>
+		        <div class="layui-input-inline">
+		            <select name="contrller" id ='id_status'>
+		              <option value="">任务状态</option>
+		              <option value="1">待执行</option>
+		              <option value="2">执行中</option>
+		              <option value="3">已暂停</option>
+		              <option value="4">已完成</option>
+		              <option value="5">已结束</option>
+		            </select>
+		        </div>
+	       </form>
+	     </div>
+	     <div class='UserTable'>
+	       <button class="layui-btn"  data-type="reload"><i class="layui-icon" >&#xe615;</i></button>
+	     </div>
+     </div>
+
+	<xblock>
+		<div class="UserTable">
+			<button class="layui-btn" onclick="x_admin_show('扫描结果同步','{% url 'tasksync' %}',600,700)"><i class="layui-icon layui-icon-download-circle">	</i>扫描同步</button>
+		</div>
+	</xblock>
+	
+	<table class="layui-hide" id="task_table" lay-filter="task"></table> 
+</div>
+<script>
+var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+
+layui.use('table', function(){
+  var table = layui.table;
+  //方法级渲染
+  table.render({
+    elem: '#task_table'
+    ,url: "{% url 'tasklist' %}"
+    ,method: 'post'
+    ,where: {'csrfmiddlewaretoken':csrf}
+    ,cols: [[
+      {checkbox: true, fixed: true}
+      ,{field:'task_name', title: '任务名称', sort: true, fixed: true, event:'Task'}
+      ,{field:'task_type', title: '任务类型'}
+      ,{field:'task_target', title: '扫描目标', sort: true}
+      ,{field:'task_status', title: '任务状态', sort: true}
+      ,{field:'task_starttime', title: '创建时间',sort: true}
+      ,{field:'task_scanner', title: '扫描节点'}
+      ,{field:'task_user', title: '申请人员',sort: true}
+      ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
+    ]]
+    ,id: 'testReload'
+    ,page: true
+    ,limit: 15
+    ,text:{
+    	none:'暂无相关数据'
+    }
+  });
+  
+  table.on('tool(task)', function(obj){
+    var data = obj.data.task_id;
+    if(obj.event === 'Task'){
+    	url = "{% url 'taskdetails' 'key' %}";
+    	url = url.replace(/key/,data);
+    	x_admin_show('任务详情',url,600);
+    } else if(obj.event === 'run'){
+    	layer.confirm('该操作为敏感操作<br>点击确认,执行该任务',function(index){
+    		url = "{% url 'taskaction' 'key' 'run' %}";
+    		url = url.replace(/key/,data);
+    		$.get(url,function(res){
+        		layer.msg(res.error);
+        		setTimeout(function(){
+		    		location.replace(location.href);
+		    	},2000)
+        	});
+    	})
+    } else if(obj.event === 'detail'){
+    	url = "{% url 'taskdetails' '0' %}";
+    	url = url.replace(/0/,data);
+    	x_admin_show('任务详情',url,600);
+    }
+  });
+  
+  
+  
+  var $ = layui.$, active = {
+	reload: function(){
+      //执行重载
+      table.reload('testReload', {
+        page: {
+          curr: 1 //重新从第 1 页开始
+        }
+        ,where: {
+        	name: $('#id_name').val()
+	    	,key: $("#id_key").val()
+	    	,type: $("#id_type option:selected").val()
+	    	,status: $("#id_status option:selected").val()
+        }
+      });
+    }
+  };
+  $('.UserTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+
+</script>
+<script type="text/html" id="barDemo">
+<div class="layui-btn-group">
+	{% verbatim %}
+		{{# if(d.task_status=='待执行'){ }}
+		<a class="layui-btn layui-btn-xs" lay-event="run"><i class="layui-icon">&#xe652;</i>执行</a>
+		{{# } }}
+	{% endverbatim %}
+	<a class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon">&#xe60a;</i>详情</a>
+</div>
+</script>
+{% endblock %}

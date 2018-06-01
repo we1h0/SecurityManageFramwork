@@ -1,0 +1,32 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+<div class="x-body">
+	<table class="layui-table">
+		<tr><td><h5>漏洞编号：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.vuln_id}}</td></tr>
+		<tr><td><h5>漏洞名称：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.vuln_name}}</td></tr>
+		<tr><td><h5>cve编号：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.cve_name}}</td></tr>
+		<tr><td><h5>危险等级：&nbsp;&nbsp;&nbsp;</h5></td><td>
+		{% if vuln.leave == '4' or vuln.leave == '3' %}
+             		<span class="label label-danger">高危</span>
+              {% elif vuln.leave == '2' %}
+              	<span class="label label-warning">中危</span>
+              {% elif vuln.leave == '1' %}
+              	<span class="label label-success">低危</span>
+              {% else %}
+              	<span class="label label-info">信息</span>
+              {% endif %}
+		</tr>
+		<tr><td><h5>影响范围：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.scopen}}</td></tr>
+		<tr><td width='20%'><h5>漏洞简介：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.introduce}}</td></tr>
+		<tr><td><h5>漏洞验证：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.vuln_info}}</td></tr>
+		<tr><td width='20%'><h5 >修复方案：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.fix}}</td></tr>
+		<tr><td><h5>发现时间：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.create_data}}</td></tr>
+		{% if vuln.fix_status == '1' %}
+			<tr><td><h5>处理记录：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.fix_action}}</td></tr>
+			<tr><td><h5>修复时间：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.update_data}}</td></tr>
+		{% endif %}
+	</table>
+</div>
+{% endblock %}

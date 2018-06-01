@@ -1,0 +1,513 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">资产详情</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div style="padding: 10px; background-color: #F2F2F2;">
+ 	<div class="layui-row layui-col-space15">
+	 	<div class="layui-col-md8">
+	      <div class="layui-card">
+	        <div class="layui-card-header">基础信息</div>
+	        <div class="layui-card-body">
+		        <div style="width: 100%; height: 120px;">
+		        	<div class='layui-col-xs4' >
+		        		<b>资产编号 :</b> {{ asset.asset_id }}
+		        	</div>
+		        	<div class='layui-col-xs4' >
+		        		<b>资产名称 :</b> {{ asset.asset_name }}
+		        	</div>
+		        	<div class='layui-col-xs4' >
+		        		<b>是否认领 :</b> 
+		        		{%  if asset.asset_inuse %}
+		        			已认领
+		        		{% else %}
+		        			待认领
+		        		{% endif %}
+		        	</div>
+		        	<div class='layui-col-xs4' >
+		        		<b>资产分类 :</b> {{ asset.asset_type.name }}
+		        	</div>
+		        	<div class='layui-col-xs4' >
+		        		<b>资产标识 :</b> {{ asset.asset_key }}
+		        	</div>
+		        	<div class='layui-col-xs4' >
+		        		<b>所属区域 :</b> {{ asset.asset_area.name }}
+		        	</div>
+		        	<div class='layui-col-xs4' >
+		        		<b>资产归属 :</b> {{ asset.user_email }}
+		        	</div>
+		        	<div class='layui-col-xs4' >
+		        		<b>更新时间:</b> {{ asset.asset_starttime }}
+		        	</div>
+		        	<div class='layui-col-xs8' >
+		        		<b>管理人员:</b>
+		        		{% for item in asset.asset_user.all %}
+		        			{{ item.username }};
+		        		{% endfor %}
+		        	</div>
+		        	<div class='layui-col-xs12' >
+		        		<b>资产介绍:</b> {{ asset.asset_description }}
+		        	</div>
+		        </div>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="layui-col-md4">
+	      <div class="layui-card">
+	        <div class="layui-card-header">威胁统计</div>
+	        <div class="layui-card-body">
+			    <div class="layui-carousel x-admin-carousel x-admin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 120px;">
+		        	<div carousel-item="">
+		        		<ul class="layui-row layui-col-space10 layui-this">
+		                   <li class="layui-col-xs3">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>威胁统计</h3>
+		                           <p><cite>{{ vuln_status.vuln_count }}</cite></p>
+		                       </a>
+		                   </li>
+		                   <li class="layui-col-xs3">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>已修复</h3>
+		                           <p><cite>{{ vuln_status.vuln_fixed }}</cite></p>
+		                       </a>
+		                   </li>
+		                   <li class="layui-col-xs3">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>待修复</h3>
+		                           <p><cite>{{ vuln_status.vuln_fix }}</cite></p>
+		                       </a>
+		                   </li>
+		                   <li class="layui-col-xs3">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>接受风险</h3>
+		                           <p><cite>{{ vuln_status.vuln_ign }}</cite></p>
+		                       </a>
+		                   </li>
+		                 </ul>
+		        	</div>
+		        </div>
+	        </div>
+	      </div>
+	    </div>
+	    {% if 'os' in info %}
+	    <div class='layui-col-md12' >
+	  		<div class="layui-card">
+		        <div class="layui-card-header">
+		        	<div class ='layui-col-md2'>
+			      		附加信息
+			      	</div>
+			      	<div class ='layui-col-md10' align='right'>
+			        	<button class="layui-btn" onclick="x_admin_show('信息变更','{% url 'assetosinfoupdate' os_info.id %}',600)"><i class="layui-icon">&#xe642;</i>信息变更</button>
+			        </div>
+		        </div>
+		        <div class="layui-card-body">
+		        	<div class="layui-row">
+			        	<div class='layui-col-xs2' >
+			        		<b>主机名称:</b> {{ os_info.hostname }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>操作系统:</b> {{ os_info.os }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>CPU型号:</b> {{ os_info.cpu_model }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>CPU数量:</b> {{ os_info.cpu_num }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>内存大小:</b> {{ os_info.memory }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>硬盘大小:</b> {{ os_info.disk }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>监控关联:</b> {{ os_info.monitor }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>设备厂商:</b> {{ os_info.vendor }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>SN号:</b> {{ os_info.sn }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>机柜信息:</b> {{ os_info.cabinet }}
+			        	</div>
+		        	</div>
+		        </div>
+	        </div>
+	  	</div>
+	  	{% endif %}
+	  	{% if 'internet' in info %}
+	  	<div class='layui-col-md12' >
+	  		<div class="layui-card">
+		        <div class="layui-card-header">
+		        	<div class ='layui-col-md2'>
+			      		附加信息
+			      	</div>
+			      	<div class ='layui-col-md10' align='right'>
+			        	<button class="layui-btn" onclick="x_admin_show('信息变更','{% url 'assetinternetinfoupdate' internet_info.id %}',600)"><i class="layui-icon">&#xe642;</i>信息变更</button>
+			        </div>
+		        </div>
+		        <div class="layui-card-body">
+		        	<div class="layui-row">
+		        		<div class='layui-col-xs2' >
+			        		<b>中间件:</b> {{ internet_info.middleware }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>中间件版本:</b> {{ internet_info.middleware_version }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>是否发布:</b> {{ internet_info.is_out }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>外网域名:</b> {{ internet_info.out_key }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>状态说明:</b> {{ internet_info.web_status }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>开发语言:</b> {{ internet_info.language }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>语言版本:</b> {{ internet_info.language_version }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>开发框架:</b> {{ internet_info.web_framwork }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>框架版本:</b> {{ internet_info.web_framwork_version }}
+			        	</div>
+			        	<div class='layui-col-xs2' >
+			        		<b>更新时间:</b> {{ internet_info.updatetime }}
+			        	</div>
+		        	</div>
+		        </div>
+	        </div>
+	  	</div>
+	  	{% endif %}
+	  	{% if 'vuln' in info %}
+	  	<div class='layui-col-md12' >
+	  		<div class="layui-card">
+		        <div class="layui-card-header">
+			        <div class ='layui-col-md2'>
+				      		漏洞列表
+				      	</div>
+				      	<div class ='layui-col-md10' align='right'>
+				        	<button class="layui-btn" onclick="x_admin_show('新增漏洞','{% url 'vulncreate' asset.asset_id %}',600)"><i class="layui-icon"></i>新增漏洞</button>
+				        </div>
+			        </div>
+		        <div class="layui-card-body">
+			        <table class="layui-hide" id="vuln_table" lay-filter="vuln"></table> 
+					<script>
+					layui.use('table', function(){
+						  var table = layui.table;
+						  //方法级渲染
+						  table.render({
+						    elem: '#vuln_table'
+						    ,url: "{% url 'vulntable' asset.asset_id %}"
+						    ,cols: [[
+						      {field:'vuln_id', title: '漏洞编号', sort: true, fixed: true}
+						      ,{field:'vuln_name', title: '漏洞名称'}
+						      ,{field:'cve_name', title: 'cve编号'}
+						      ,{field:'asset', title: '关联资产', event:'Asset'}
+						      ,{field:'vuln_type', title: '漏洞分类', sort: true}
+						      ,{field:'leave', title: '威胁等级',sort: true}
+						      ,{field:'fix_status', title: '修复状态',sort: true}
+						      ,{field:'update_data', title: '更新时间'}
+						      ,{title: '高级选项', align:'center', toolbar: '#vulnDemo'}
+						    ]]
+						    ,id: 'vulnReload'
+						    ,page: true
+						    ,text:{
+						    	none:'暂无相关数据'
+						    }
+						  });
+						  table.on('tool(vuln)', function(obj){
+						    var data = obj.data.vuln_id;
+						    //var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+						    if(obj.event === 'status'){
+						    	url = "{% url 'vulnfix' '0' %}";
+						    	url = url.replace(/0/,data);
+						    	x_admin_show('修复确认',url,600);
+						    }else if(obj.event === 'edit'){
+						    	url = "{% url 'vulnupdate' '0' %}";
+						    	url = url.replace(/0/,data);
+						    	x_admin_show('更新信息',url,600);
+						    }
+						  });
+						});
+					</script>
+		        </div>
+	        </div>
+	  	</div>
+	  	{% endif %}
+	  	{% if 'port' in info %}
+		<div class='layui-col-md12' >
+	  		<div class="layui-card">
+		        <div class="layui-card-header">
+			      	<div class ='layui-col-md2'>
+			      		端口列表
+			      	</div>
+			      	<div class ='layui-col-md10' align='right'>
+			        	<button class="layui-btn" onclick="x_admin_show('添加资产','{% url 'portcreate' asset.asset_id %}',600)"><i class="layui-icon"></i>新增端口</button>
+			        </div>
+		        </div>
+		        <div class="layui-card-body">
+					<table class="layui-hide" id="port_table" lay-filter="port"></table> 
+					<script>
+					layui.use('table', function(){
+						  var table = layui.table;
+						  //方法级渲染
+						  table.render({
+						    elem: '#port_table'
+						    ,url: "{% url 'porttable' asset.asset_id %}"
+						    ,cols: [[
+						      {field:'port', title: '端口名称', sort: true, fixed: true}
+						      ,{field:'product', title: '服务信息'}
+						      ,{field:'version', title: '版本信息', sort: true, event:'Asset'}
+						      ,{field:'port_info', title: '端口说明', sort: true}
+						      ,{field:'updatetime', title: '更新日期',sort: true}
+						      ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
+						    ]]
+						    ,id: 'portReload'
+						    //,page: true
+						    ,text:{
+						    	none:'暂无相关数据'
+						    }
+						  });
+						  table.on('tool(port)', function(obj){
+						    var data = obj.data.id;
+						    //var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+						    if(obj.event === 'delete'){
+						    	layer.confirm('该操作为敏感操作<br>点击确认，删除该端口',function(index){
+						    		url = "{% url 'portdelete' '0' %}";
+							    	url = url.replace(/0/,data);
+							    	$.get(url,function(res){
+							    		layer.msg(res.error);
+						        		setTimeout(function(){
+								    		location.replace(location.href);
+								    	},2000)
+									});
+						    	})
+						    } else if(obj.event === 'edit'){
+						    	url = "{% url 'portupdate' '0' %}";
+						    	url = url.replace(/0/,data);
+						    	x_admin_show('更新信息',url,600);
+						    }
+						  });
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	  	{% if 'plugin' in info %}
+		<div class='layui-col-md12' >
+	  		<div class="layui-card">
+		        <div class="layui-card-header">
+		        	<div class ='layui-col-md6'>
+			      		组件列表(主要为应用系统开发组件，如struts2等)
+			      	</div>
+			      	<div class ='layui-col-md6' align='right'>
+			        	<button class="layui-btn" onclick="x_admin_show('添加组件','{% url 'plugincreate' asset.asset_id %}',600,600)"><i class="layui-icon"></i>新增组件</button>
+			        </div>
+			    </div>
+		        <div class="layui-card-body">
+		        	<table class="layui-hide" id="asset_plugin" lay-filter="plugin"></table> 
+		        	<script>
+		        	layui.use('table', function(){
+		        		  var table = layui.table;
+		        		  //方法级渲染
+		        		  table.render({
+		        		    elem: '#asset_plugin'
+		        		    ,url: "{% url 'plugintable' asset.asset_id %}"
+		        		    ,cols: [[
+		        		      {field:'name', title: '组件名称', sort: true, fixed: true}
+		        		      ,{field:'version', title: '组件版本'}
+		        		      ,{field:'plugin_info', title: '组件说明', sort: true}
+		        		      ,{field:'updatetime', title: '更新时间', sort: true}
+		        		      ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
+		        		    ]]
+		        		    ,id: 'pluginReload'
+		        		    //,page: true
+		        		    ,text:{
+		        		    	none:'暂无相关数据'
+		        		    }
+		        		  });
+		        		  table.on('tool(plugin)', function(obj){
+							    var data = obj.data.id;
+							    //var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+							    if(obj.event === 'delete'){
+							    	layer.confirm('该操作为敏感操作<br>点击确认，删除该组件',function(index){
+							    		url = "{% url 'plugindelete' '0' %}";
+								    	url = url.replace(/0/,data);
+								    	$.get(url,function(res){
+								    		layer.msg(res.error);
+							        		setTimeout(function(){
+									    		location.replace(location.href);
+									    	},2000)
+										});
+							    	})
+							    } else if(obj.event === 'edit'){
+							    	url = "{% url 'pluginupdate' '0' %}";
+							    	url = url.replace(/0/,data);
+							    	x_admin_show('更新信息',url,600);
+							    }
+							  });
+		        		});
+		        	</script>
+		        </div>
+	        </div>
+	  	</div>
+	  	{% endif %}
+	  	{% if 'file' in info %}
+	  	<div class='layui-col-md12' >
+	  		<div class="layui-card">
+		        <div class="layui-card-header">
+		        	<div class ='layui-col-md6'>
+			      		附加文件(主要为运维手册，产品文档等需要交接或留存的文件)
+			      	</div>
+			      	<div class ='layui-col-md6' align='right'>
+			        	<button class="layui-btn" onclick="x_admin_show('添加附件','{% url 'filecreate' asset.asset_id %}',600,600)"><i class="layui-icon"></i>新增文件</button>
+			        </div>
+			    </div>
+		        <div class="layui-card-body">
+		        	<table class="layui-hide" id="asset_file" lay-filter="file"></table> 
+		        	<script>
+		        	layui.use('table', function(){
+		        		  var table = layui.table;
+		        		  //方法级渲染
+		        		  table.render({
+		        		    elem: '#asset_file'
+		        		    ,url: "{% url 'filetable' asset.asset_id %}"
+		        		    ,cols: [[
+		        		      {field:'name', title: '组件名称', sort: true, fixed: true}
+		        		      ,{field:'file', title: '文件路径'}
+		        		      ,{field:'file_info', title: '文件说明', sort: true}
+		        		      ,{field:'updatetime', title: '更新时间', sort: true}
+		        		      ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
+		        		    ]]
+		        		    ,id: 'fileReload'
+		        		    //,page: true
+		        		    ,text:{
+		        		    	none:'暂无相关数据'
+		        		    }
+		        		  });
+		        		  table.on('tool(file)', function(obj){
+							    var data = obj.data.id;
+							    //var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+							    if(obj.event === 'delete'){
+							    	layer.confirm('该操作为敏感操作<br>点击确认，删除该文档',function(index){
+							    		url = "{% url 'filedelete' '0' %}";
+								    	url = url.replace(/0/,data);
+								    	$.get(url,function(res){
+								    		layer.msg(res.error);
+							        		setTimeout(function(){
+									    		location.replace(location.href);
+									    	},2000)
+										});
+							    	})
+							    } else if(obj.event === 'edit'){
+							    	url = "{% url 'fileupdate' '0' %}";
+							    	url = url.replace(/0/,data);
+							    	x_admin_show('更新信息',url,600);
+							    }
+							  });
+		        		});
+		        	</script>
+		        </div>
+	        </div>
+	  	</div>
+	  	{% endif %}
+	  	<div class='layui-col-md12' >
+	  		<div class="layui-card">
+		        <div class="layui-card-header">
+		        	<div class ='layui-col-md6'>
+			      		关联资产
+			      	</div>
+			      	<div class ='layui-col-md6' align='right'>
+			        	<button class="layui-btn" onclick="x_admin_show('资产关联','{% url 'assetconnectcreate' asset.asset_id %}',600,300)"><i class="layui-icon"></i>新增关联</button>
+			        </div>
+				</div>
+		        <div class="layui-card-body">
+		        	<table class="layui-hide" id="asset_asset" lay-filter="assetconnect"></table> 
+		        	<script>
+					layui.use('table', function(){
+						  var table = layui.table;
+						  //方法级渲染
+						  table.render({
+						    elem: '#asset_asset'
+						    ,url: "{% url 'assetconnecttable' asset.asset_id %}"
+						    ,cellMinWidth: 80
+						    ,cols: [[
+						    	{field:'asset_id', title: '资产编号', sort: true, fixed: true}
+						        ,{field:'asset_name', title: '资产名称'}
+						        ,{field:'asset_key', title: '资产标识', sort: true, event:'Asset'}
+						        ,{field:'asset_type', title: '资产分类', sort: true}
+						        ,{field:'asset_status', title: '资产状态',sort: true}
+						        ,{field:'asset_inuse', title: '认领状态'}
+						        ,{field:'asset_score', title: '风险值'}
+						        ,{field:'user_email', title: '管理人员'}
+						        ,{field:'asset_updatetime', title: '更新时间',sort: true}
+						        ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
+						    ]]
+						    ,id: 'assetconnectReload'
+						    ,text:{
+						    	none:'暂无相关数据'
+						    }
+						  });
+						  table.on('tool(assetconnect)', function(obj){
+							    var data = obj.data.asset_id;
+							    //var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+							    if(obj.event === 'delete'){
+							    	layer.confirm('该操作为敏感操作<br>点击确认，删除该关联',function(index){
+							    		url = "{% url 'assetconnectdelete' asset.asset_id 'key' %}";
+								    	url = url.replace(/key/,data);
+								    	$.get(url,function(res){
+								    		layer.msg(res.error);
+							        		setTimeout(function(){
+									    		location.replace(location.href);
+									    	},2000)
+										});
+							    	})
+							    } else if(obj.event === 'edit'){
+							    	url = "{% url 'assetupdate' 'key' %}";
+							    	url = url.replace(/key/,data);
+							    	x_admin_show('更新信息',url,600);
+							    } else if(obj.event === 'Asset'){
+							    	url = "{% url 'assetdetails' '0' %}";
+							    	url = url.replace(/0/,data);
+							    	x_admin_show('资产详情',url);
+							    } 
+							  });
+						});
+					</script>
+		        </div>
+	        </div>
+	  	</div>
+	</div>
+</div>
+<script type="text/html" id="barDemo">
+<div class="layui-btn-group">
+	<a class="layui-btn layui-btn-xs" lay-event="delete"><i class="layui-icon">&#xe640;</i></a>
+
+  	<a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i></a>
+</div>
+</script>
+<script type="text/html" id="vulnDemo">
+<div class="layui-btn-group">
+  	<a class="layui-btn layui-btn-xs" lay-event="status"><i class="layui-icon">&#xe674;</i></a>
+	{% if user.is_superuser %}
+		<a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i></a>
+	{% endif %}
+</div>
+</script>
+{% endblock %}

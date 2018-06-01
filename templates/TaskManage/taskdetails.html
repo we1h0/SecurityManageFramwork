@@ -1,0 +1,30 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+<div class="x-body">
+	<table class="layui-table">
+		<tr><td><h5>任务编号：</h5></td><td>{{task.task_id}}</td></tr>
+		<tr><td><h5>扫描标识：</h5></td><td>{{task.scan_id}}</td></tr>
+		<tr><td><h5>任务名称：</h5></td><td>{{task.task_name}}</td></tr>
+		<tr><td><h5>任务类型：</h5></td><td>{{task.task_type}}</td></tr>
+		<tr><td><h5>扫描器：</h5></td><td>{{task.task_scanner.scanner_name}}</td></tr>
+		<tr><td><h5>任务目标：</h5></td><td>{{task.task_target}}</td></tr>
+		<tr><td><h5>任务描述：</h5></td><td>{{task.task_targetinfo}}</td></tr>
+		<tr><td><h5>创建时间：</h5></td><td>{{task.task_starttime}}</td></tr>
+		<tr><td><h5>申请人：</h5></td><td>{{task.task_user.username}}</td></tr>
+		{% if task.request_status == '0' %}
+			审批中
+		{% elif task.request_status == '1'  %}
+			审批通过
+		{% else %}
+			审批拒绝
+		{% endif %}
+		</td></tr>
+		<tr><td><h5>审批人：</h5></td><td>{{task.action_user.username}}</td></tr>
+		<tr><td><h5>请求状态：</h5></td><td>
+		<tr><td><h5>审批备注：</h5></td><td>{{task.request_note}}</td></tr>
+		<tr><td><h5>审批时间：</h5></td><td>{{task.task_endtime}}</td></tr>
+	</table>
+</div>
+{% endblock %}

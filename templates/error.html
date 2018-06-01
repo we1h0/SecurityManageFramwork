@@ -1,0 +1,9 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+	<div align='center'>
+		<i class='layui-icon layui-icon-website' style="font-size: 500px;"></i><br>
+		<h3><strong>警告！</strong>{{ error }} <a href="javascript:history.back(-1)">点我返回</a></h3>
+	</div>
+{% endblock %}

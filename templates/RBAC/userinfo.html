@@ -1,0 +1,20 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+<div class="x-body layui-anim layui-anim-up">
+	<table class="layui-table" lay-skin="nob">
+		<tr><td><h5>用户姓名: </h5></td><td>{{ user.first_name }}{{ user.last_name }}</td></tr>
+		<tr><td><h5>用户ID: </h5></td><td>{{ user.username }}</td></tr>
+		<tr><td><h5>邮箱地址： </h5></td><td>{{ user.email }}</td></tr>
+		<tr><td><h5>员工编号： </h5></td><td>{{ user.profile.user_num }}</td></tr>
+		<tr><td><h5>入驻日期 ：</h5></td><td>{{ user.date_joined }}</td></tr>
+		<tr><td><h5>职位名称：</h5></td><td>{{ user.profile.title }}</td></tr>
+		<tr><td><h5>直属领导：</h5></td><td>{{ user.profile.parent_email }}</td></tr>
+		<tr><td><h5>系统角色：</h5></td><td>{{ user.profile.roles.title }}</td></tr>
+		<tr><td><h5>座机号码： </h5></td><td>{{ user.profile.telephone }}</td></tr>
+		<tr><td><h5>手机号码 </h5></td><td>{{ user.profile.mobilephone }}</td></tr>
+		<tr><td><h5>个人简介 </h5></td><td>{{ user.profile.description }}</td></tr>
+	</table>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-body layui-anim layui-anim-up">
+	<blockquote class="layui-elem-quote">欢迎使用SeMF安全管控平台
+		<span class="x-red"></span>
+	</blockquote>
+	<div class='layui-row'>
+		<div class="layui-card">
+	        <div class="layui-card-header">数据统计</div>
+	        <div class="layui-card-body">
+			    <div class="layui-carousel x-admin-carousel x-admin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 120px;">
+		        	<div carousel-item="">
+		        		<ul class="layui-row layui-col-space10 layui-this">
+		                   <li class="layui-col-xs2">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>用户总数</h3>
+		                           <p><cite>{{ user_count }}</cite></p>
+		                       </a>
+		                   </li>
+		                   <li class="layui-col-xs2">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>文章总数</h3>
+		                           <p><cite>{{ article_count }}</cite></p>
+		                       </a>
+		                   </li>
+		                   <li class="layui-col-xs2">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>资产总数</h3>
+		                           <p><cite>{{ asset_count }}</cite></p>
+		                       </a>
+		                   </li>
+		                   <li class="layui-col-xs2">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>cnvd漏洞数</h3>
+		                           <p><cite>{{ cnvdvuln_count }}</cite></p>
+		                       </a>
+		                   </li>
+		                   <li class="layui-col-xs2">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>风险总数</h3>
+		                           <p><cite>{{ vuln_count}}</cite></p>
+		                       </a>
+		                   </li>
+		                   <li class="layui-col-xs2">
+		                       <a href="javascript:;" class="x-admin-backlog-body">
+		                           <h3>待处理风险数</h3>
+		                           <p><cite>{{ vuln_fix_count}}</cite></p>
+		                       </a>
+		                   </li>
+		                 </ul>
+		        	</div>
+		        </div>
+	        </div>
+		</div>
+	</div>
+	{% if article %}
+	<div class="layui-row ">
+		<div class="layui-col-md10 ">
+			<article id="paragraph" class="block-area">
+				<div align='center'>
+					<h3>{{ article.article_name }}</h3>
+					<a>作者：{{ article.article_user.username }}</a>
+					<a>发布时间：{{ article.article_updatetime }}</a>
+				</div>
+					{{ article.article_body | safe }}
+			</article>
+		</div>
+		<div class="layui-col-md2 ">
+			{% if article_list %}
+				<h4>最新知识共享</h4>
+				<ul class="lists-mark">
+					{% for article in article_list %}
+						<li><a onclick="x_admin_show('文章详情','{% url 'articledetails' article.article_id %}')">{{ article.article_name }}</a></li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

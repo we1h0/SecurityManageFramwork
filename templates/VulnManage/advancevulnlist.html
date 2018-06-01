@@ -1,0 +1,157 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">漏洞管理</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div class="x-body">
+	<div class="layui-row  ">
+		<div class='layui-col-md6'>
+	       <form class="layui-form layui-col-md12 x-so">
+				<input class="layui-input" placeholder="资产关联" name="key" id="id_key">
+				<div class="layui-input-inline">
+		           <select name="contrller" id ='id_leave'>
+		              <option value="">威胁等级</option>
+		              <option value="1">低危</option>
+		              <option value="2">中危</option>
+		              <option value="3">高危</option>
+		              <option value="4">紧急</option>
+		            </select>
+		        </div>
+		        <div class="layui-input-inline">
+		            <select name="contrller" id ='id_vuln_type'>
+		              <option value="">修复状态</option>
+		              <option value="0">已忽略</option>
+		              <option value="1">已修复</option>
+		              <option value="2">待修复</option>
+		              <option value="3">漏洞重现</option>
+		              <option value="4">复查中</option>
+		            </select>
+		        </div>
+	       </form>
+	     </div>
+	     <div class='UserTable'>
+	       <button class="layui-btn"  data-type="reload"><i class="layui-icon" >&#xe615;</i></button>
+	     </div>
+     </div>
+
+	<xblock>
+		<div class="UserTable">
+			<button class="layui-btn " data-type="statuschoice"><i class="layui-icon layui-icon-senior"></i>批量变更</button>
+		</div>
+	</xblock>
+	
+	<table class="layui-hide" id="vuln_table" lay-filter="vuln"></table> 
+</div>
+<script>
+var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+
+layui.use('table', function(){
+  var table = layui.table;
+  //方法级渲染
+  table.render({
+    elem: '#vuln_table'
+    ,url: "{% url 'vulnlist' %}"
+    ,method: 'post'
+    ,where: {'csrfmiddlewaretoken':csrf}
+    ,cols: [[
+      {checkbox: true, fixed: true}
+      ,{field:'vuln_id', title: '漏洞编号', sort: true, fixed: true}
+      ,{field:'vuln_name', title: '漏洞名称'}
+      ,{field:'cve_name', title: 'cve编号', sort: true}
+      ,{field:'asset', title: '关联资产', event:'Asset'}
+      ,{field:'vuln_type', title: '漏洞分类', sort: true}
+      ,{field:'leave', title: '威胁等级',sort: true}
+      ,{field:'fix_status', title: '修复状态',sort: true}
+      ,{field:'update_data', title: '更新时间'}
+      ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
+    ]]
+    ,id: 'vulnsReload'
+    ,page: true
+    ,limit: 15
+    ,text:{
+    	none:'暂无相关数据'
+    }
+  });
+  
+  table.on('tool(vuln)', function(obj){
+    var data = obj.data.asset_id
+    ,vuln_id = obj.data.vuln_id
+    if(obj.event === 'Asset'){
+    	url = "{% url 'assetdetails' '0' %}";
+    	url = url.replace(/0/,data);
+    	x_admin_show('资产详情',url);
+    } else if(obj.event === 'status'){
+    	url = "{% url 'vulnfix' 'key' %}";
+    	url = url.replace(/key/,vuln_id);
+    	x_admin_show('资产详情',url,600,600);
+    } else if(obj.event === 'detail'){
+    	url = "{% url 'vulndetails' '0' %}";
+    	url = url.replace(/0/,vuln_id);
+    	x_admin_show('漏洞详情',url,600);
+    }
+    else if(obj.event === 'edit'){
+    	url = "{% url 'vulnupdate' '0' %}";
+    	url = url.replace(/0/,vuln_id);
+    	x_admin_show('信息变更',url,600);
+    }
+  });
+  
+  
+  
+  var $ = layui.$, active = {
+	statuschoice: function(){ //获取选中数据
+    	//var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+	    var checkStatus = table.checkStatus('vulnsReload')
+	    ,data = checkStatus.data
+	    ,list=new Array();
+    	for(var i=0;i<data.length;i++){
+    		list[i] = data[i].vuln_id
+    	}
+    	layer.confirm('该操作为敏感操作<br>点击确认，选中资产将变更为复查状态',function(index){
+		    $.post("{% url 'vulnlistfix' %}",{'vuln_id_list':JSON.stringify(list),'action':'status','csrfmiddlewaretoken': csrf},function(res){
+	    		layer.msg(res.error);
+	    		setTimeout(function(){
+		    		location.replace(location.href);
+		    	},2000)
+	    	});
+    	})
+    }
+  	,reload: function(){
+      //执行重载
+      table.reload('vulnsReload', {
+        page: {
+          curr: 1 //重新从第 1 页开始
+        }
+        ,where: {
+	    	key: $("#id_key").val()
+	    	,leave: $("#id_leave option:selected").val()
+	    	,fix_status: $("#id_vuln_type option:selected").val()
+        }
+      });
+    }
+  };
+  $('.UserTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+
+</script>
+<script type="text/html" id="barDemo">
+<div class="layui-btn-group">
+	{% if user.is_superuser %}
+		<a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i></a>
+	{% endif %}
+  	<a class="layui-btn layui-btn-xs" lay-event="status"><i class="layui-icon">&#xe674;</i></a>
+	<a class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon">&#xe60a;</i></a>
+</div>
+</script>
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">用户管理</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div class="x-body">
+	<div class="layui-row  ">
+		<div class='layui-col-md3'>
+	       <form class="layui-form layui-col-md12 x-so">
+		        <div class="layui-input-inline">
+			        <select name="contrller" id='id_notice_type'>
+		              <option value="">消息类型</option>
+		              <option value="notice">系统通告</option>
+		              <option value="inform">任务通知</option>
+		            </select>
+		        </div>
+		        <div class="layui-input-inline">
+			        <select name="contrller" id='id_notice_status'>
+		              <option value="">消息状态</option>
+		              <option value="True">已读</option>
+		              <option value="False">未读</option>
+		            </select>
+		        </div>
+	       </form>
+	     </div>
+	     <div class='UserTable'>
+	       <button class="layui-btn"  data-type="reload"><i class="layui-icon" >&#xe615;</i></button>
+	     </div>
+     </div>
+
+	<xblock>
+		<div class="UserTable">
+			<button class="layui-btn " data-type="deletechoice"><i class="layui-icon layui-icon-delete"></i>删除</button>
+			<button class="layui-btn " data-type="readchoice"><i class="layui-icon layui-icon-ok-circle"></i>已读</button>
+		    <button class="layui-btn " data-type="readall"><i class="layui-icon layui-icon-auz"></i>全部已读</button>
+		</div>
+	</xblock>
+	<table class="layui-hide" id="notice_table" lay-filter="notice"></table> 
+	
+</div>
+<script>
+var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+
+layui.use('table', function(){
+  var table = layui.table;
+  //方法级渲染
+  table.render({
+    elem: '#notice_table'
+    ,url: "{% url 'noticelist' %}"
+    ,method: 'post'
+    ,where: {'csrfmiddlewaretoken':csrf}
+    ,cols: [[
+      {checkbox: true, fixed: true}
+      ,{field:'notice_title', title: '标题',width:150, fixed: true}
+      ,{field:'notice_body', title: '通知内容', event:'read'}
+      ,{field:'notice_status', title: '阅读状态',width:100}
+      ,{field:'notice_time', title: '通知日期',width:200, sort: true}
+    ]]
+    ,id: 'testReload'
+    ,page: true
+    ,limit: 15
+  });
+  
+  table.on('tool(notice)', function(obj){
+	    var data = obj.data.id;
+	    if(obj.event === 'read'){
+	    	url = "{% url 'noticeread' '0' %}";
+	    	url = url.replace(/0/,data);
+	    	//x_admin_show('详情',url);
+	    	var w=($(window).width()*0.9);
+	    	var h=($(window).height() - 50);
+	    	layer.open({
+	            type: 2,
+	            area: [w+'px', h +'px'],
+	            fix: false, //不固定
+	            maxmin: true,
+	            shadeClose: true,
+	            shade:0.4,
+	            title: '详情',
+	            content: url,
+	            end: function(){
+	            	location.replace(location.href);
+	            }
+	        });
+	    }
+	  });
+  
+  var $ = layui.$, active = {
+	deletechoice: function(){ //获取选中数据
+    	//var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+	    var checkStatus = table.checkStatus('testReload')
+	    ,data = checkStatus.data
+	    ,list=new Array();
+    	for(var i=0;i<data.length;i++){
+    		list[i] = data[i].id
+    	}
+    	layer.confirm('该操作为敏感操作<br>点击确认，删除选中消息，删除后将无法恢复',function(index){
+		    $.post("{% url 'noticeaction' %}",{'notice_id_list':JSON.stringify(list),'action':'delete','csrfmiddlewaretoken': csrf},function(res){
+		    	layer.msg(res.error);
+		    	setTimeout(function(){
+		    		location.replace(location.href);
+		    	},2000)
+	    	});
+    	})
+    }
+	,readchoice: function(){ //获取选中数据
+	 	//var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+	    var checkStatus = table.checkStatus('testReload')
+	    ,data = checkStatus.data
+	    ,list=new Array();
+	 	for(var i=0;i<data.length;i++){
+	 		list[i] = data[i].id
+	 	}
+	 	
+	    $.post("{% url 'noticeaction' %}",{'notice_id_list': JSON.stringify(list),'action':'read','csrfmiddlewaretoken': csrf},function(res){
+    		layer.msg(res.error);
+    		setTimeout(function(){
+	    		location.replace(location.href);
+	    	},2000)
+	 	})
+	 }
+	,readall: function(){ //获取选中数据
+	    $.post("{% url 'noticereadall' %}",{'action':'readall','csrfmiddlewaretoken': csrf},function(res){
+	    	layer.msg(res.error);
+	    	setTimeout(function(){
+	    		location.replace(location.href);
+	    	},2000)
+    		
+	 	})
+	 }
+  	,reload: function(){
+      //执行重载
+      table.reload('testReload', {
+        page: {
+          curr: 1 //重新从第 1 页开始
+        }
+        ,where: {
+	    	notice_status: $("#id_notice_status option:selected").val()
+	    	,notice_type: $("#id_notice_type option:selected").val()
+        }
+      });
+    }
+  };
+  $('.UserTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+
+</script>
+{% endblock %}

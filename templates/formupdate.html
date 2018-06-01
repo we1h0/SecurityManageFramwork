@@ -1,0 +1,54 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+	<div class="x-body layui-anim layui-anim-up">
+		<form class="layui-form" method='post' action="{% url post_url argu %}" enctype="multipart/form-data">
+			<div class="layui-form-item">
+				{% csrf_token %}
+				{{ form.as_table }}
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-xs6" >
+			    	<button type="reset" class="layui-btn layui-btn-radius" >重置表单</button>
+			  	</div>
+			  	<div class="layui-col-xs6" align='right'>
+			    	<button type="submit" class="layui-btn layui-btn-radius" lay-submit lay-filter="form_post" >立即提交</button>
+			  	</div>
+			 </div>
+		</form>
+	</div>
+<script>
+layui.use(['laydate'], function(){
+	var laydate = layui.laydate;
+	laydate.render({
+	    elem: '#id_up_time'
+	  });
+	laydate.render({
+	    elem: '#id_guarante_time'
+	  });
+	laydate.render({
+	    elem: '#id_down_time'
+	  });
+});
+layui.use('layedit', function(){
+	var layedit = layui.layedit;
+	
+	layedit.set({
+		uploadImage:{
+			url:"{% url  'imgupload' %}"
+			,type:'post'
+		}
+	});
+	index = layedit.build('id_article_body',{
+		height: 300
+	}); //建立编辑器
+	layui.use('form', function(){
+	  var form = layui.form;
+	  form.on('submit(form_post)', function(data){
+		  layedit.sync(index);
+	  });
+	});
+});
+</script>
+{% endblock %}

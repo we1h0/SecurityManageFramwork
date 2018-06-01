@@ -1,0 +1,118 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">漏洞库</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div class="x-body">
+	<div class="layui-row  ">
+		<div class='layui-col-md4'>
+	       <form class="layui-form layui-col-md12 x-so">
+				<input class="layui-input" placeholder="名称/cve/cnvd" name="name" id="id_name">
+				<div class="layui-input-inline">
+		           <select name="contrller" id ='id_leave'>
+		              <option value="">威胁等级</option>
+		              <option value="低">低危</option>
+		              <option value="中">中危</option>
+		              <option value="高">高危</option>
+		            </select>
+		        </div>
+	       </form>
+	     </div>
+	     <div class='UserTable'>
+	       <button class="layui-btn"  data-type="reload"><i class="layui-icon" >&#xe615;</i></button>
+	     </div>
+     </div>
+     {% if user.is_superuser %}
+     <xblock>
+		<div class="UserTable">
+			<button class="layui-btn" onclick="x_admin_show('漏洞库更新','{% url 'cnvdvulnrenew' %}',600,300)"><i class="layui-icon"></i>漏洞库更新</button>
+		</div>
+	</xblock>
+	{% endif %}
+	<table class="layui-hide" id="vuln_table" lay-filter="vuln"></table> 
+</div>
+<script>
+var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+
+layui.use('table', function(){
+  var table = layui.table;
+  //方法级渲染
+  table.render({
+    elem: '#vuln_table'
+    ,url: "{% url 'cnvdvulnlist' %}"
+    ,method: 'post'
+    ,where: {'csrfmiddlewaretoken':csrf}
+    ,cols: [[
+      {field:'cve_id', title: 'cve编号', sort: true, fixed: true}
+      ,{field:'cnvd_id', title: 'cnvd编号', event:'vuln'}
+      ,{field:'cve_name', title: '漏洞名称', sort: true}
+      ,{field:'leave', title: '威胁等级'}
+      ,{field:'update_data', title: '更新时间',sort: true}
+      ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
+    ]]
+    ,id: 'vulnsReload'
+    ,page: true
+    ,limit: 15
+    ,text:{
+    	none:'暂无相关数据'
+    }
+  });
+  
+  table.on('tool(vuln)', function(obj){
+    var data = obj.data.id;
+    if(obj.event === 'vuln'){
+    	url = "{% url 'cnvdvulndetails' '0' %}";
+    	url = url.replace(/0/,data);
+    	x_admin_show('资产详情',url);
+    } else if(obj.event === 'detail'){
+    	url = "{% url 'cnvdvulndetails' '0' %}";
+    	url = url.replace(/0/,data);
+    	window.open(url);
+    }
+    else if(obj.event === 'edit'){
+    	url = "{% url 'cnvdvulnupdate' '0' %}";
+    	url = url.replace(/0/,data);
+    	x_admin_show('信息变更',url,600);
+    }
+  });
+  
+  
+  
+  var $ = layui.$, active = {
+  reload: function(){
+      //执行重载
+      table.reload('vulnsReload', {
+        page: {
+          curr: 1 //重新从第 1 页开始
+        }
+        ,where: {
+        	name: $("#id_name").val()
+	    	,leave: $("#id_leave option:selected").val()
+        }
+      });
+    }
+  };
+  $('.UserTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+
+</script>
+<script type="text/html" id="barDemo">
+<div class="layui-btn-group">
+	{% if user.is_superuser %}
+		<a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i></a>
+	{% endif %}
+	<a class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon">&#xe60a;</i></a>
+</div>
+</script>
+{% endblock %}

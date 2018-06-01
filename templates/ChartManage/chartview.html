@@ -1,0 +1,268 @@
+{% extends "index.html" %} 
+{% load staticfiles %}
+
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">报表中心</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div class="x-body">
+	<div class="layui-row">
+		{% if is_asset %}
+		<div class="layui-col-md4">
+			<div id='assettype' style="width: 100%;height:400px;"></div>
+		</div>
+		{% endif %}
+		{% if is_vuln %}
+		<div class="layui-col-md4">
+			<div id='vulnleave' style="width: 100%;height:400px;"></div>
+		</div>
+		<div class="layui-col-md4">
+			<div id='vulnstatus' style="width: 100%;height:400px;"></div>
+		</div>
+		{% endif %}
+		{% if is_danger %}
+		<div class="layui-col-md12">
+			<div id='vulnname' style="width: 100%;height:400px;"></div>
+		</div>
+		{% endif %}
+		<div class="layui-col-md12">
+			<div id='date_month' style="width: 100%;height:400px;"></div>
+		</div>
+	</div>
+</div>
+<script src="{% static 'js/echarts.common.min.js' %}"></script>
+<script>
+var option = {
+	 	title : {
+	        x:'center'
+	    },
+	    tooltip : {
+	        trigger: 'item',
+	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+	    },
+	    toolbox: {
+	    	show : true,
+	    	feature:{
+	    		saveAsImage : {show: true}
+	    	}
+	    },
+	    legend: {
+	        orient : 'vertical',
+	        x : 'left',
+	        data:[]
+	    },
+	    calculable : true,
+		series : [
+	        {
+	            name: '资产类型',
+	            type: 'pie',
+	            radius: ['40%', '70%'],
+	            data:[]
+	        }
+	    ]
+	};
+var AssetType = echarts.init(document.getElementById('assettype'));
+
+AssetType.setOption(option);
+
+$.get("{% url 'chartassettype' %}").done(function (data) {
+	AssetType.setOption({
+		title : {
+		       text: '资产类型',
+		   },
+		legend: {
+		       data: data.categories
+		   },
+		series : [
+		    {
+		       data: data.data
+		    }
+		]
+	 });
+});
+
+var VulnLeave = echarts.init(document.getElementById('vulnleave'));
+
+VulnLeave.setOption(option);
+
+$.get("{% url 'chartvulnleave' %}").done(function (data) {
+	VulnLeave.setOption({
+		title : {
+		       text: '威胁分级',
+		   },
+		color :[
+			'#228B22','#EEDC82','#CD950C','#A52A2A'
+		 ],
+		legend: {
+		       data: data.categories
+		   },
+		series : [
+		    {
+		       data: data.data
+		    }
+		]
+	 });
+});
+
+var VulnStatus = echarts.init(document.getElementById('vulnstatus'));
+
+VulnStatus.setOption(option);
+
+$.get("{% url 'chartvulnstatus' %}").done(function (data) {
+	VulnStatus.setOption({
+		title : {
+		       text: '修复状态',
+		   },
+		color :[
+			'#228B22','#EEDC82','#CD950C','#A52A2A'
+		],
+		legend: {
+		       data: data.categories
+		   },
+		series : [
+		    {
+		       data: data.data
+		    }
+		]
+	 });
+});
+</script>
+<script>
+option = {
+		title : {
+		       text: '近30天数据波动',
+		   },
+	    tooltip : {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        data:['添加资产数','发现漏洞数','修复漏洞数']
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    calculable : true,
+	    xAxis : [
+	        {
+	            type : 'category',
+	            boundaryGap : false,
+	            data : []
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value'
+	        }
+	    ],
+	    series : []
+	};
+var DateMonth = echarts.init(document.getElementById('date_month'));
+
+DateMonth.setOption(option);
+$.get("{% url 'chartgetdatemonth' %}").done(function (data) {
+	DateMonth.setOption({
+		xAxis : [
+	        {
+	            data : data.date
+	        }
+	    ],
+		series : [
+			{
+	            name:'添加资产数',
+	            type:'line',
+	            data: data.asset_date
+	        },
+	        {
+	            name:'发现漏洞数',
+	            type:'line',
+	            data:data.vuln_create
+	        },
+	        {
+	            name:'修复漏洞数',
+	            type:'line',
+	            data:data.vuln_fixed
+	        }
+		]
+	 });
+});
+</script>
+<script>
+option = {
+	    tooltip : {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        data:[]
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    calculable : true,
+	    xAxis : [
+	        {
+	            type : 'category',
+	            data : []
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value'
+	        }
+	    ],
+	    series : []
+	};
+
+var VulnName = echarts.init(document.getElementById('vulnname'));
+
+VulnName.setOption(option);
+$.get("{% url 'chartvulnname' %}").done(function (data) {
+	VulnName.setOption({
+		title : {
+		       text: '高危漏洞统计',
+		   },
+	    legend: {
+	        	data:[]
+	    },
+		xAxis : [
+	        {
+	            data : data.categories
+	        }
+	    ],
+		series : [
+			{
+	            name:'漏洞统计',
+	            type:'bar',
+	            data: data.data,
+	            itemStyle: {
+	                normal: {
+	                    color: function(params) {
+	                        // build a color map as your need.
+	                        var colorList = [
+	                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+	                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+	                           '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+	                        ];
+	                        return colorList[params.dataIndex]
+	                    },
+	                }
+	            }
+	        }
+		]
+	 });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+<div class="x-body">
+	<table class="layui-table">
+		<tr><td><h5>漏洞编号：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.cve_id}}</td></tr>
+		<tr><td><h5>cnvd编号：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.cnvd_id}}</td></tr>
+		<tr><td><h5>漏洞名称：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.cve_name}}</td></tr>
+		<tr><td><h5>更新日期：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.update_data}}</td></tr>
+		<tr><td><h5>危险等级：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.leave}}</td></tr>
+		<tr><td><h5>影响范围：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.scopen}}</td></tr>
+		<tr><td><h5>漏洞简介：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.introduce}}</td></tr>
+		<tr><td width='20%'><h5>修复方案：&nbsp;&nbsp;&nbsp;</h5></td><td>{{vuln.fix}}</td></tr>
+		<tr><td><h5>修复指南：&nbsp;&nbsp;&nbsp;</h5></td><td><a>{{vuln.fix_step}}</a></td></tr>
+	</table>
+</div>
+{% endblock %}

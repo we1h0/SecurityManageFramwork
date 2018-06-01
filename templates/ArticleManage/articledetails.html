@@ -1,0 +1,21 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+		<a href="">文章详情</a>
+    </span>
+</div>
+<div class="x-body">
+<article id="paragraph" class="block-area">
+<div align='center'>
+	<h3>{{ article.article_name }}</h3>
+	<a>作者：{{ article.article_user.username }}</a>
+	<a>发布时间：{{ article.article_updatetime }}</a>
+</div>
+	{{ article.article_body | safe }}
+</article>
+</div>
+{% endblock %}

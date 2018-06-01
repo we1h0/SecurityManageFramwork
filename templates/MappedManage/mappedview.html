@@ -1,0 +1,136 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">知识共享</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div class="x-body">
+	<div class="layui-row  ">
+		<div class='layui-col-md4'>
+	       <form class="layui-form layui-col-md12 x-so">
+				<input class="layui-input" placeholder="IP" name="name" id="id_name">
+		        <div class="layui-input-inline">
+		            <select name="contrller" id ='id_mapped_status'>
+		              <option value="">映射状态</option>
+		              <option value="True">使用中</option>
+		              <option value="False">已禁用</option>
+		            </select>
+		        </div>
+	       </form>
+	     </div>
+	     <div class='UserTable'>
+	       <button class="layui-btn"  data-type="reload"><i class="layui-icon" >&#xe615;</i></button>
+	     </div>
+     </div>
+
+	{% if user.is_superuser %}
+	<xblock>
+		<div class="UserTable">
+		    <button class="layui-btn" onclick="x_admin_show('添加映射','{% url 'mappedcreate' %}',600)"><i class="layui-icon"></i>添加映射</button>
+		</div>
+	</xblock>
+	{% endif %}
+	
+	<table class="layui-hide" id="mapped_table" lay-filter="mapped"></table> 
+</div>
+<script>
+var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+
+layui.use('table', function(){
+  var table = layui.table;
+  //方法级渲染
+  table.render({
+    elem: '#mapped_table'
+    ,url: "{% url 'mappedlist' %}"
+    ,method: 'post'
+    ,where: {'csrfmiddlewaretoken':csrf}
+    ,cols: [[
+      {field:'LANip', title: '内网IP', sort: true, fixed: true,event:'LANip'}
+      ,{field:'LANPort', title: '内网端口', sort: true}
+      ,{field:'WANip', title: '外网IP', sort: true,event:'WANip'}
+      ,{field:'WANPort', title: '外网端口', sort: true}
+      ,{field:'Domain', title: '域名',sort: true}
+      ,{field:'mapped_status', title: '映射状态',sort: true}
+      ,{field:'start_time', title: '开启时间',sort: true}
+      ,{field:'end_time', title: '关闭时间',sort: true}
+      ,{field:'request_email', title: '申请邮箱',sort: true}
+      ,{field:'action_email', title: '操作人员',sort: true}
+      ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
+    ]]
+    ,id: 'testReload'
+    ,page: true
+    ,limit: 15
+    ,text:{
+    	none:'暂无相关数据'
+    }
+  });
+  
+  table.on('tool(mapped)', function(obj){
+	var id = obj.data.id;
+    var LANip_id = obj.data.LANip_id;
+    var WANip_id = obj.data.WANip_id;
+    var is_superuser = "{{ user.is_superuser }}";
+    if(obj.event === 'LANip'){
+    	url = "{% url 'assetdetails' '0' %}";
+    	url = url.replace(/0/,LANip_id);
+    	if(is_superuser === 'True'){
+    		x_admin_show('资产详情',url);
+    	}else{
+    		layer.msg('权限不足,无法查看');
+    	}
+    }else if(obj.event === 'WANip'){
+    	url = "{% url 'assetdetails' 'key' %}";
+    	url = url.replace(/key/,WANip_id);
+    	if(is_superuser=== 'True'){
+    		x_admin_show('资产详情',url);
+    	}else{
+    		layer.msg('权限不足,无法查看');
+    	}
+    }else if(obj.event === 'edit'){
+    	url = "{% url 'mappedupdate' 'key' %}";
+    	url = url.replace(/key/,id);
+    	x_admin_show('信息更新',url,600);
+    } else if(obj.event === 'detail'){
+    	url = "{% url 'mappeddetails' 'key' %}";
+    	url = url.replace(/key/,id);
+    	x_admin_show('映射详情',url,600);
+    }
+  });
+  
+  
+  
+  var $ = layui.$, active = {
+	reload: function(){
+      //执行重载
+      table.reload('testReload', {
+        page: {
+          curr: 1 //重新从第 1 页开始
+        }
+        ,where: {
+        	name: $('#id_name').val()
+	    	,status: $("#id_mapped_status option:selected").val()
+        }
+      });
+    }
+  };
+  $('.UserTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+
+</script>
+<script type="text/html" id="barDemo">
+<div class="layui-btn-group">
+  	<a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i>修改</a>
+	<a class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon">&#xe60a;</i>详情</a>
+</div>
+</script>
+{% endblock %}

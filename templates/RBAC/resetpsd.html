@@ -1,0 +1,24 @@
+{% extends "RBAC/login.html" %} 
+<meta charset="UTF-8">
+
+{% block user %}
+	<form method="post" class="layui-form layui-form-pane"  >
+	  	{% csrf_token %}
+	  	{{ form.email}}
+		<hr class="hr15">
+	  	{{ form.password}}
+		<hr class="hr15">
+		{{ form.repassword}}
+		<hr class="hr15">
+		<input value="{{ title }}" style="width:100%;" type="submit">
+		<hr class="hr20" >
+     	<div class="layui-row">
+     		<div class="layui-col-xs6">
+      			<span><a href="{% url 'login' %}">已有账号？返回登录</a></span>
+      		</div>
+		    <div class="layui-col-xs6" align='right'>
+				<span><a href="{% url 'regist' 'regist' %}" >新用户？账号申请</a></span>
+			</div>
+		</div>
+ 	</form>
+{% endblock %}

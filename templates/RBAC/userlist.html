@@ -1,0 +1,137 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">用户管理</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div class="x-body">
+	<div class="layui-row ">
+		<div class='layui-col-md5'>
+	       <form class="layui-form layui-col-md12 x-so">
+				<input class="layui-input" placeholder="邮箱地址" name="email" id="id_email">
+				<div class="layui-input-inline">
+		            <select name="contrller" id ='id_area'>
+		              <option value="">所属区域</option>
+		              {% for item in area %}
+		              	<option value="{{ item.id }}">{{ item.name }}</option>
+		              {% endfor %}
+		            </select>
+		        </div>
+		        <div class="layui-input-inline">
+			        <select name="contrller" id='id_is_active'>
+		              <option value="">账号状态</option>
+		              <option value="True">已启用</option>
+		              <option value="False">未启用</option>
+		            </select>
+		        </div>
+	       </form>
+	     </div>
+	     <div class='UserTable'>
+	       <button class="layui-btn"  data-type="reload"><i class="layui-icon" >&#xe615;</i></button>
+	     </div>
+     </div>
+
+	<xblock>
+		<div class="UserTable">
+			<button class="layui-btn " data-type="disablechoice"><i class="layui-icon layui-icon-close-fill"></i>禁用账号</button>
+		    <button class="layui-btn " data-type="enablechoice"><i class="layui-icon layui-icon-auz"></i>启用账号</button>
+		    <button class="layui-btn" onclick="x_admin_show('添加用户','{% url 'useradd' %}',600,450)"><i class="layui-icon"></i>添加</button>
+		</div>
+	</xblock>
+	
+	<table class="layui-hide" id="user_table" lay-filter="user"></table> 
+</div>
+<script>
+var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+
+layui.use('table', function(){
+  var table = layui.table;
+  //方法级渲染
+  table.render({
+    elem: '#user_table'
+    ,url: "{% url 'userlist' %}"
+    ,method: 'post'
+    ,where: {'csrfmiddlewaretoken':csrf}
+    ,cols: [[
+      {checkbox: true, fixed: true}
+      ,{field:'name', title: '姓名', sort: true, fixed: true}
+      ,{field:'mail', title: '邮箱地址'}
+      ,{field:'date', title: '入驻日期', sort: true}
+      ,{field:'area', title: '所属区域',sort: true}
+      ,{field:'title', title: '职位信息'}
+      ,{field:'role', title: '角色信息'}
+      ,{field:'status', title: '账号状态'}
+      ,{field:'lastlogin', title: '最后登录'}
+    ]]
+    ,id: 'testReload'
+    ,page: true
+    ,limit: 15
+    ,text:{
+    	none:'暂无先关数据'
+    }
+  });
+  
+  var $ = layui.$, active = {
+	disablechoice: function(){ //获取选中数据
+    	//var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+	    var checkStatus = table.checkStatus('testReload')
+	    ,data = checkStatus.data
+	    ,list=new Array();
+    	for(var i=0;i<data.length;i++){
+    		list[i] = data[i].mail
+    	}
+    	layer.confirm('该操作为敏感操作<br>点击确认，禁用用户'+data.email+'的使用权限，该操作是被禁用用户无法登陆',function(index){
+		    $.post("{% url 'userdisactivate' %}",{'user_list':JSON.stringify(list),'action':'stop','csrfmiddlewaretoken': csrf},function(res){
+	    		layer.msg(res.error);
+	    		setTimeout(function(){
+		    		location.replace(location.href);
+		    	},2000)
+	    	});
+    	})
+    }
+	,enablechoice: function(){ //获取选中数据
+	 	//var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+	    var checkStatus = table.checkStatus('testReload')
+	    ,data = checkStatus.data
+	    ,list=new Array();
+	 	for(var i=0;i<data.length;i++){
+	 		list[i] = data[i].mail
+	 	}
+	 	layer.confirm('该操作为敏感操作<br>点击确认，禁用用户'+data.email+'的使用权限，该操作是被禁用用户无法登陆',function(index){
+		    $.post("{% url 'userdisactivate' %}",{'user_list':JSON.stringify(list),'action':'start','csrfmiddlewaretoken': csrf},function(res){
+	    		layer.msg(res.error);
+	    		setTimeout(function(){
+		    		location.replace(location.href);
+		    	},2000)
+	    	});
+	 	})
+	 }
+  ,reload: function(){
+      //执行重载
+      table.reload('testReload', {
+        page: {
+          curr: 1 //重新从第 1 页开始
+        }
+        ,where: {
+        	email: $('#id_email').val()
+	    	,area: $("#id_area option:selected").val()
+	    	,is_active: $("#id_is_active option:selected").val()
+        }
+      });
+    }
+  };
+  $('.UserTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+
+</script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-body">
+	<table class="layui-table">
+		<tr><td><strong>内网IP：</strong></td><td>{{mapped.LANip.asset_key}}</td></tr>
+		<tr><td><strong>内网端口：</strong></td><td>{{mapped.LANPort.port}}</td></tr>
+		<tr><td><strong>外网IP：</strong></td><td>{{mapped.WANip.asset_key}}</td></tr>
+		<tr><td><strong>外网端口：</strong></td><td>{{mapped.WANPort.port}}</td></tr>
+		<tr><td><strong>域名：</strong></td><td>{{mapped.Domain}}</td></tr>
+		{% if mapped.mapped_status %}
+			<tr><td><strong>映射状态：</strong></td><td>使用中</td></tr>
+		{% else %}
+			<tr><td><strong>映射状态：</strong></td><td>已禁用</td></tr>
+		{% endif %}
+		
+		<tr><td><strong>开启时间：</strong></td><td>{{mapped.start_time}}</td></tr>
+		<tr><td><strong>关闭时间：</strong></td><td>{{mapped.end_time}}</td></tr>
+		<tr><td><strong>申请人邮箱：</strong></td><td>{{mapped.request_email}}</td></tr>
+		<tr><td><strong>操作人邮箱：</strong></td><td>{{mapped.action_email}}</td></tr>
+		<tr><td><strong>申请单号：</strong></td><td>{{mapped.request_order}}</td></tr>
+		<tr><td><strong>申请人：</strong></td><td>{{mapped.request_user}}</td></tr>
+		<tr><td><strong>员工编号：</strong></td><td>{{mapped.request_user_num}}</td></tr>
+		<tr><td><strong>申请部门：</strong></td><td>{{mapped.request_user_department}}</td></tr>
+		<tr><td><strong>联系电话：</strong></td><td>{{mapped.telephone}}</td></tr>
+		<tr><td><strong>更新时间：</strong></td><td>{{mapped.mapped_updatetime}}</td></tr>
+		<tr><td><strong>映射备注：</strong></td><td>{{mapped.Mapped_description}}</td></tr>
+	</table>
+</div>
+{% endblock %}
