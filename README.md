@@ -71,3 +71,4 @@
   <br>https://my.oschina.net/u/3867729/blog/1819486        //python3安装
   <br>https://my.oschina.net/u/3867729/blog/1819491        //rabbitmq安装
   <br>https://my.oschina.net/u/3867729/blog/1819492        //防火墙设置
+  <br>https://my.oschina.net/u/3867729/blog/1819517        //应用部署
