@@ -62,16 +62,16 @@ PERMISSION_MENU_KEY = 'pmk'
 #设置邮箱
 EMAIL_HOST = 'smtp-mail.outlook.com'          #SMTP地址
 EMAIL_PORT = 25                 #SMTP端口
-EMAIL_HOST_USER = 'SeMFnotice@outlook.com'    #我自己的邮箱
-EMAIL_HOST_PASSWORD = 'Mymanage!#@123'         #我的邮箱密码
+EMAIL_HOST_USER = 'xxxx@xxx.com'    #我自己的邮箱
+EMAIL_HOST_PASSWORD = 'password3'         #我的邮箱密码
 EMAIL_SUBJECT_PREFIX = u'[SeMF]'      #为邮件Subject-line前缀,默认是'[django]'
 EMAIL_USE_TLS = True               #与SMTP服务器通信时，是否启动TLS链接(安全链接)。默认是false
 #管理员站点
-SERVER_EMAIL = 'yuguanc@isoftstone.com'
-DEFAULT_FROM_EMAIL = '安全管控平台<SeMFnotice@outlook.com>'
+SERVER_EMAIL = xxxxx
+DEFAULT_FROM_EMAIL = '安全管控平台<Se@outlook.com>'
 
 #设置队列存储
-BROKER_URL = 'amqp://test:test132@10.10.19.9/make'
+BROKER_URL = 'amqp://user：password@xx.xx.xx.xx/make'
 CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
 
 # Application definition
