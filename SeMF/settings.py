@@ -67,7 +67,7 @@ EMAIL_HOST_PASSWORD = 'password3'         #我的邮箱密码
 EMAIL_SUBJECT_PREFIX = u'[SeMF]'      #为邮件Subject-line前缀,默认是'[django]'
 EMAIL_USE_TLS = True               #与SMTP服务器通信时，是否启动TLS链接(安全链接)。默认是false
 #管理员站点
-SERVER_EMAIL = xxxxx
+SERVER_EMAIL = 'xxxxx'
 DEFAULT_FROM_EMAIL = '安全管控平台<Se@outlook.com>'
 
 #设置队列存储
