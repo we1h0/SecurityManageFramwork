@@ -20,7 +20,7 @@
 
 #### 安装教程
 
-1. 准备centos7系统，安装python3，mysql（选用），rabbitmq，nmap，安装方法可参照本页底部的备注
+1. 准备centos7系统，安装python3，mysql（选用），rabbitmq，nmap，安装方法可参照项目根目录中的文档《SeMF安装指南》
     
 2. 下载解压本项目，并切换到项目路径，修改项目setting.py文件，根据需要设置 发件邮箱、rabbitmq参数以及数据库信息
     ```
@@ -66,8 +66,3 @@
     ![qq交流群](https://gitee.com/uploads/images/2018/0527/114130_0e8d0451_1390378.png "屏幕截图.png")
 2.  如有其他定制化需求，可发邮件至gy071089@outlook.com联系我
 
-####  备注
-如基础环境安装出现问题，请参考以下链接
-  <br>https://my.oschina.net/u/3867729/blog/1819486        //python3安装
-  <br>https://my.oschina.net/u/3867729/blog/1819491        //rabbitmq安装
-  <br>https://my.oschina.net/u/3867729/blog/1819492        //防火墙设置
