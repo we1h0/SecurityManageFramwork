@@ -217,7 +217,6 @@
 						      {field:'vuln_id', title: '漏洞编号', sort: true, fixed: true}
 						      ,{field:'vuln_name', title: '漏洞名称'}
 						      ,{field:'cve_name', title: 'cve编号'}
-						      ,{field:'asset', title: '关联资产', event:'Asset'}
 						      ,{field:'vuln_type', title: '漏洞分类', sort: true}
 						      ,{field:'leave', title: '威胁等级',sort: true}
 						      ,{field:'fix_status', title: '修复状态',sort: true}
@@ -236,11 +235,15 @@
 						    if(obj.event === 'status'){
 						    	url = "{% url 'vulnfix' '0' %}";
 						    	url = url.replace(/0/,data);
-						    	x_admin_show('修复确认',url,600);
+						    	x_admin_show('修复确认',url,600,600);
 						    }else if(obj.event === 'edit'){
 						    	url = "{% url 'vulnupdate' '0' %}";
 						    	url = url.replace(/0/,data);
 						    	x_admin_show('更新信息',url,600);
+						    }else if(obj.event === 'detail'){
+						    	url = "{% url 'vulndetails' '0' %}";
+						    	url = url.replace(/0/,data);
+						    	x_admin_show('漏洞详情',url,600);
 						    }
 						  });
 						});
@@ -389,8 +392,7 @@
 		        		    elem: '#asset_file'
 		        		    ,url: "{% url 'filetable' asset.asset_id %}"
 		        		    ,cols: [[
-		        		      {field:'name', title: '组件名称', sort: true, fixed: true}
-		        		      ,{field:'file', title: '文件路径'}
+		        		      {field:'name', title: '文件名称', sort: true, fixed: true, event:'file'}
 		        		      ,{field:'file_info', title: '文件说明', sort: true}
 		        		      ,{field:'updatetime', title: '更新时间', sort: true}
 		        		      ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
@@ -415,10 +417,13 @@
 									    	},2000)
 										});
 							    	})
-							    } else if(obj.event === 'edit'){
+							    }else if(obj.event === 'edit'){
 							    	url = "{% url 'fileupdate' '0' %}";
 							    	url = url.replace(/0/,data);
 							    	x_admin_show('更新信息',url,600);
+							    } else if(obj.event === 'file'){
+							    	url = obj.data.file;
+							    	window.open(url);
 							    }
 							  });
 		        		});
@@ -508,6 +513,7 @@
 	{% if user.is_superuser %}
 		<a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i></a>
 	{% endif %}
+	<a class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon">&#xe60a;</i></a>
 </div>
 </script>
 {% endblock %}

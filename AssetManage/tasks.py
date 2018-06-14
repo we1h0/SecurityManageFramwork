@@ -45,28 +45,28 @@ def asset_port(user_id,asset_id_list):
                     name = port_list[port_info].get('name')
                     product = port_list[port_info].get('product')
                     version =  port_list[port_info].get('version')
-                    if product != 'Microsoft Windows RPC':
-                        port_get = models.Port_Info.objects.get_or_create(
-                            port=port,
-                            asset = asset,
-                            )
-                        if port_get[1]:
-                            port = port_get[0]
-                            port.product=product
-                            port.name = name
-                            port.version=version
-                            port.save()
+                    port_get = models.Port_Info.objects.get_or_create(
+                        port=port,
+                        asset = asset,
+                        )
+                    if port_get[1]:
+                        port = port_get[0]
+                        port.product=product
+                        port.name = name
+                        port.version=version
+                        port.save()
+                data_manage={
+                              'notice_title':'资产发现通知',
+                              'notice_body':'您对'+ ip +'的端口发现任务完成',
+                              'notice_url':'/asset/user/',
+                              'notice_type':'notice',
+                              }
+                notice_add(user,data_manage)
             else:
                 return False
         else:
             return False
-    data_manage={
-              'notice_title':'资产发现通知',
-              'notice_body':'您的端口发现任务完成，点我查看结果',
-              'notice_url':'/asset/user/',
-              'notice_type':'notice',
-              }
-    notice_add(user,data_manage)
+    
     return True
 
 

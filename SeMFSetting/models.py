@@ -1,6 +1,7 @@
 #coding:utf-8
 #coding:utf-8
 from django.db import models
+from django.contrib.auth.models import User
 from AssetManage.models import AssetType
 
 # Create your models here.
@@ -13,15 +14,29 @@ SCANNER_TYPE = (
                            ('Nessus','Nessus'),
                            )
                  ),
-                ('APP',(
-                        ('MobSF','MobSF'),
-                        )
-                 ),
                 )
 SCANNER_STATUS = (
                 ('启用','启用'),
                 ('禁用','禁用'),
                 )
+
+FILE_TYPE = (
+    ('网络设备','网络设备'),
+    ('业务系统','业务系统'),
+    ('漏洞列表','漏洞列表'),
+    )
+
+class files(models.Model):
+    name = models.CharField('名称',max_length=50,null=True)
+    file_type = models.CharField('类型',max_length=50,choices=FILE_TYPE)
+    file = models.FileField('批量文件',upload_to ='files/')
+    update_data = models.DateField("更新日期",auto_now=True)
+    
+    action_user = models.ForeignKey(User,related_name='asset_files_user',on_delete=models.CASCADE,null=True,blank=True)
+    def __str__(self):
+        return self.name
+
+
 
 
 class Scanner(models.Model):
@@ -42,7 +57,8 @@ class Scanner(models.Model):
     
     
 class ScannerPolicies(models.Model):
-    policies_name = models.CharField('策略名称',max_length=50)
+    policies_name = models.CharField('策略名称',max_length=50,help_text='扫描策略为扫描器策略名称')
+    policies_key = models.CharField('策略编号',max_length=50,null=True,blank=True,help_text='AWVS扫描器需填写，全扫描编号为11111111-1111-1111-1111-111111111111')
     scanner = models.ForeignKey(Scanner,verbose_name='节点关联',related_name='police_for_scanner',on_delete=models.CASCADE)
     
     def __str__(self):

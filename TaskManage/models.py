@@ -4,7 +4,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from AssetManage.models import Asset
-from SeMFSetting.models import Scanner
+from SeMFSetting.models import Scanner,ScannerPolicies
 # Create your models here.
 TASK_TYPE = (
              ('安全扫描','安全扫描'),
@@ -45,6 +45,7 @@ class Task(models.Model):
     task_asset = models.ManyToManyField(Asset,related_name='asset_to_task',verbose_name='资产关联')
     
     task_scanner = models.ForeignKey(Scanner,related_name='scanner_to_task',on_delete=models.CASCADE,verbose_name='扫描器')
+    scanner_police = models.ForeignKey(ScannerPolicies,related_name='police_to_scanner',null=True,on_delete=models.CASCADE,verbose_name='扫描策略')
     
     task_user = models.ForeignKey(User,related_name='task_for_user',on_delete=models.CASCADE,verbose_name='任务用户')
     action_user = models.ForeignKey(User,related_name='taskrequestaction_for_user',on_delete=models.CASCADE,null=True,blank=True)

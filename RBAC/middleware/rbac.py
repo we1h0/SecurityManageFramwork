@@ -49,6 +49,12 @@ class RbacMiddleware(MiddlewareMixin):
                 return HttpResponseRedirect('/view/')
         elif re.match('/uploads/imgs/', request_url):
             return None
+        elif re.match('/uploads/files/', request_url):
+            if request.user.is_superuser:
+                return None
+            else:
+                error ='权限错误'
+                return render(request,'error.html',{'error':error})
         elif re.match('/uploads/assetfiles/', request_url):
             url_get = File.objects.filter(asset__asset_user=request.user,file=request_url)
             if url_get:

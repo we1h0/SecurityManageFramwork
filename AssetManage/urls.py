@@ -6,7 +6,7 @@ Created on 2018年5月15日
 '''
 
 from django.urls import path
-from .views import views,assetdetails,port,plugin,file,assetconnect,assetinfo,taskview
+from .views import views,assetdetails,port,plugin,file,assetconnect,assetinfo,taskview,handover,csv
 
 urlpatterns = [
     path('user/',views.assetview,name='assetview'),
@@ -16,6 +16,20 @@ urlpatterns = [
     path('user/delete/',views.assetdelete,name='assetdelete'),
     path('user/update/<str:asset_id>/',views.assetupdate,name='assetupdate'),
     path('user/details/<str:asset_id>/',assetdetails.assetdetailsview,name='assetdetails'),
+    
+    
+    path('user/csv/os/',csv.create_csv_os,name='createoscsv'),
+    path('user/csv/web/',csv.create_csv_web,name='createwebcsv'),
+    path('user/csv/vuln/',csv.create_csv_vuln,name='createvulncsv'),
+    path('user/csv/upload/',csv.file_update,name='createuploadcsv'),
+    
+    
+    path('user/handover/',handover.asset_handover,name='assethandover'),
+    
+    path('handover/',handover.handoverview,name='assethandoverview'),
+    path('handover/list/',handover.asset_handover_list,name='assethandoverlist'),
+    path('handover/action/',handover.asset_handover_action,name='assethandoveraction'),
+    
     
     
     path('user/task/',taskview.task_action,name='assettaskaction'),

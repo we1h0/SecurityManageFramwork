@@ -45,8 +45,6 @@ def assetdetailsview(request,asset_id):
     
     info = []
     
-    
-    
     for typeinfo in assettypeinfo:
         info.append(typeinfo.key)
     

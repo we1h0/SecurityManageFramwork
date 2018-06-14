@@ -69,7 +69,7 @@ def renew_vuln_xml():
                                                        introduce=introduce )
                 print(cve_id + ' is OK')
             except:
-                print('Fail')
+                print('Pass')
         shutil.move(os.path.join(files_path,file_name),os.path.join(files_path_old,file_name))
 
 

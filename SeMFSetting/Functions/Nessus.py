@@ -11,12 +11,11 @@ verify = False
 
 def get_scannerinfo(scanner_id):
     
-    scanner_list = Scanner.objects.filter(id=scanner_id)
+    scanner = Scanner.objects.filter(id=scanner_id).first()
 
-    for scaanner in scanner_list:
-        url = scaanner.scanner_url
-        Access_Key = scaanner.scanner_apikey
-        Secret_Key = scaanner.scanner_apisec
+    url = scanner.scanner_url
+    Access_Key = scanner.scanner_apikey
+    Secret_Key = scanner.scanner_apisec
     return url,Access_Key,Secret_Key
 
 

@@ -9,6 +9,25 @@ from django import forms
 from django.forms import ModelForm,widgets
 
 
+class HandoverActionForm(ModelForm):
+    class Meta:
+        model = models.Handover
+        fields = ['action_reason']
+        widgets = {
+                   'action_reason':widgets.Textarea(attrs={'class':'form-control','placeholder':'资产交接审批说明'}),
+                   }
+
+class HandoverForm(ModelForm):
+    class Meta:
+        model = models.Handover
+        fields = ['dst_email','reason']
+        widgets = {
+                   'dst_email':widgets.TextInput(attrs={'class':'form-control','placeholder':'请输入对方账号邮箱'}),
+                   'reason':widgets.Textarea(attrs={'class':'form-control','placeholder':'资产转让说明（该操作会将您名下的资产转让 给目标账号，并停用该账号，请谨慎操作）'}),
+                   }
+
+
+
 class AssetUserForm(ModelForm):
     class Meta:
         model = models.AssetUser

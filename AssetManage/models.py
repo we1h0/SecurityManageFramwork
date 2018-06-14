@@ -9,7 +9,28 @@ ASSET_REQUEST_ACTION = (
                         ('资产认领','资产认领'),
                         )
 
+ASSET_REQUEST_STATUS=(
+    ('0','审批中'),
+    ('1','审批通过'),
+    ('2','审批拒绝'),
+    )
 
+
+
+
+class Handover(models.Model):
+    dst_email = models.EmailField('目标账号')
+    status = models.CharField('申请状态',max_length = 30,choices=ASSET_REQUEST_STATUS,default='0')
+    reason = models.TextField('转让说明')
+    action_reason = models.TextField('审批说明')
+    request_starttime = models.DateField('添加时间',auto_now_add=True)
+    request_updatetime = models.DateField('更新时间',auto_now=True)
+    
+    request_user = models.EmailField('申请账号')
+    
+    action_user = models.ForeignKey(User,related_name='handover_action_user',on_delete=models.CASCADE,null=True,blank=True)
+    def __str__(self):
+        return self.id
 
 
 
@@ -55,7 +76,7 @@ class Asset(models.Model):
     
     user_email=models.EmailField('联系人邮箱',null=True,blank=True)
     
-    asset_area = models.ForeignKey(Area,related_name='area_for_asset',verbose_name='所属区域',on_delete=models.CASCADE,null=True,limit_choices_to={'parent__isnull':True})
+    asset_area = models.ForeignKey(Area,related_name='area_for_asset',verbose_name='所属区域',on_delete=models.CASCADE,null=True,blank=True,limit_choices_to={'parent__isnull':True})
     asset_type = models.ForeignKey(AssetType,related_name='type_for_asset',verbose_name='资产类型',on_delete=models.CASCADE,null=True,limit_choices_to={'parent__isnull':False})
     asset_user = models.ManyToManyField(User,related_name='asset_to_user',blank=True)
     
@@ -126,7 +147,7 @@ class OS_Info(models.Model):
     asset = models.OneToOneField(Asset,related_name='os_for_asset',on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.web_status
+        return self.asset.asset_key
 
 
 
@@ -146,12 +167,12 @@ class Internet_Info(models.Model):
     asset = models.OneToOneField(Asset,related_name='internet_for_asset',on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.web_status
+        return self.asset.asset_key
 
 
 
 class Port_Info(models.Model):
-    port = models.IntegerField('开放端口')
+    port = models.CharField('开放端口',max_length=50)
     name = models.CharField('服务名称',max_length=50,null=True)
     product = models.CharField('产品信息',max_length=100,null=True)
     version = models.CharField('应用版本',max_length=50,null=True)

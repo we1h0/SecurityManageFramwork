@@ -63,6 +63,9 @@
 		        <dl class="layui-nav-child">
 		          <dd><a onclick="x_admin_show('基本信息','{% url 'userinfo'%}',600,700)">基本资料</a></dd>
 		          <dd><a onclick="x_admin_show('资料变更','{% url 'changeuserinfo'%}',600,750)">资料变更</a></dd>
+		          {% if not user.is_superuser %}
+		          	<dd><a onclick="x_admin_show('资产交接','{% url 'assethandover'%}',600,500)">资产交接</a></dd>
+		          {% endif %}
 		          <dd><a onclick="x_admin_show('更改密码','{% url 'changepsd'%}',600,500)">更改密码</a></dd>
 		          <dd><a href="{%  url  'logout' %}">退出登录</a></dd>
 		        </dl>

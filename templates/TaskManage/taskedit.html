@@ -1,0 +1,24 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+	<div class="x-body layui-anim layui-anim-up">
+		<form class="layui-form" method='post' action="{% url post_url %}" enctype="multipart/form-data">
+			<div class="layui-form-item">
+				{% csrf_token %}
+				{{ form.as_table }}
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-xs6" >
+			    	<button type="reset" class="layui-btn layui-btn-radius" >重置表单</button>
+			  	</div>
+			  	<div class="layui-col-xs6" align='right'>
+			    	<button type="submit" class="layui-btn layui-btn-radius" lay-submit lay-filter="form_post" >立即提交</button>
+			  	</div>
+			 </div>
+		</form>
+	</div>
+<script>
+
+</script>
+{% endblock %}

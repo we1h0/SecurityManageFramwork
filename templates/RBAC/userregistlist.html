@@ -84,7 +84,7 @@ layui.use('table', function(){
     var data = obj.data;
     //var csrf = $('input[name="csrfmiddlewaretoken"]').val();
     if(obj.event === 'access'){
-    	layer.confirm('该操作为敏感操作<br>点击确认，同意用户'+data.email+'注册为 '+'request_type',function(index){
+    	layer.confirm('该操作为敏感操作<br>点击确认，同意用户'+data.email+'注册为 '+data.request_type,function(index){
     		$.post("{% url 'userregistaction' %}",{'request_id':data.request_id,'action':'access','csrfmiddlewaretoken': csrf},function(res){
         		layer.msg(res.error);
         		setTimeout(function(){

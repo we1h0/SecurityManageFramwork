@@ -44,6 +44,7 @@
 	<xblock>
 		<div class="UserTable">
 			<button class="layui-btn" onclick="x_admin_show('扫描结果同步','{% url 'tasksync' %}',600,700)"><i class="layui-icon layui-icon-download-circle">	</i>扫描同步</button>
+			<button class="layui-btn" onclick="x_admin_show('任务新建','{% url 'scantask' %}',600,700)"><i class="layui-icon">&#xe679;</i>新建任务</button>
 		</div>
 	</xblock>
 	
@@ -96,6 +97,17 @@ layui.use('table', function(){
 		    	},2000)
         	});
     	})
+    } else if(obj.event === 'stop'){
+    	layer.confirm('该操作为敏感操作<br>点击确认,执行该任务',function(index){
+    		url = "{% url 'taskaction' 'key' 'stop' %}";
+    		url = url.replace(/key/,data);
+    		$.get(url,function(res){
+        		layer.msg(res.error);
+        		setTimeout(function(){
+		    		location.replace(location.href);
+		    	},2000)
+        	});
+    	})
     } else if(obj.event === 'detail'){
     	url = "{% url 'taskdetails' '0' %}";
     	url = url.replace(/0/,data);
@@ -132,7 +144,9 @@ layui.use('table', function(){
 <div class="layui-btn-group">
 	{% verbatim %}
 		{{# if(d.task_status=='待执行'){ }}
-		<a class="layui-btn layui-btn-xs" lay-event="run"><i class="layui-icon">&#xe652;</i>执行</a>
+			<a class="layui-btn layui-btn-xs" lay-event="run"><i class="layui-icon">&#xe652;</i>执行</a>
+		{{# } else if(d.task_status=='执行中'){ }}
+			<a class="layui-btn layui-btn-xs" lay-event="stop"><i class="layui-icon">&#x1007;</i>取消</a>
 		{{# } }}
 	{% endverbatim %}
 	<a class="layui-btn layui-btn-xs" lay-event="detail"><i class="layui-icon">&#xe60a;</i>详情</a>

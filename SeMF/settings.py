@@ -41,6 +41,9 @@ WEB_URL = 'http://localhost:8000'
 #设置登录初始路径
 LOGIN_URL = '/view/'
 
+#设置缓存文件路径
+TMP_PATH = os.path.join(BASE_DIR, 'tmp')
+
 #设置登录session有效时间
 SESSION_COOKIE_AGE = 60*360
 #设置session管理历览器失效
@@ -71,7 +74,7 @@ SERVER_EMAIL = 'xxxxx'
 DEFAULT_FROM_EMAIL = '安全管控平台<Se@outlook.com>'
 
 #设置队列存储
-BROKER_URL = 'amqp://user：password@xx.xx.xx.xx/make'
+BROKER_URL = 'amqp://user:psd@xx.xx.xx.xx/vhost'    #设置与rabbitmq一致
 CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
 
 # Application definition

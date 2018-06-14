@@ -201,7 +201,7 @@ def asset_create(request):
             except:
                 num_id = 0
             num_id += 1
-            asset_id = '01' + time.strftime('%Y%m%d',time.localtime(time.time()))+str(num_id)+str(random.randint(0,9))
+            asset_id = '01' + time.strftime('%Y%m%d',time.localtime(time.time()))+str(num_id)
             asset_name = form.cleaned_data['asset_name']
             asset_type = form.cleaned_data['asset_type']
             asset_key = form.cleaned_data['asset_key']
@@ -324,12 +324,12 @@ def assettablelist(request):
         type_get = models.AssetType.objects.filter(parent__isnull=False)
     else:
         type_get = models.AssetType.objects.filter(id =asset_type )
-    
+    '''
     area = request.POST.get('area')
     if not area:
         area_get = Area.objects.filter(parent__isnull=True)
     else:
-        area_get = Area.objects.filter(id =area )
+        area_get = Area.objects.filter(id =area )'''
     
     
     if user.is_superuser:
@@ -337,7 +337,7 @@ def assettablelist(request):
             asset_name__icontains = name,
             asset_key__icontains = key,
             asset_type__in=type_get,
-            asset_area__in=area_get,
+            #asset_area__in=area_get,
             ).order_by('-asset_score','-asset_updatetime')
     else:
         assetlist = user.asset_to_user.all().order_by('-asset_score','-asset_updatetime')
@@ -349,7 +349,7 @@ def assettablelist(request):
             asset_name__icontains = name,
             asset_key__icontains = key,
             asset_type__in=type_get,
-            asset_area__in=area_get,
+            #asset_area__in=area_get,
             )
     total = assetlist.count()
     assetlist = paging(assetlist,rows,page)

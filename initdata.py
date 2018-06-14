@@ -25,6 +25,7 @@ def initmenu():
     submain_list = [
                     {'title':'资产列表','icon':"&#xe60a;",'parent_title':'资产管理'},
                     {'title':'资产审批','icon':"&#xe60b;",'parent_title':'资产管理'},
+                    {'title':'交接审批','icon':"&#xe607;",'parent_title':'资产管理'},
                     
                     {'title':'映射列表','icon':"&#xe60a;",'parent_title':'网络映射'},
                     
@@ -53,6 +54,7 @@ def initmenu():
     permission_list = [
                        {'title':'资产列表','url':'/asset/user/','is_menu':True,'menu_title':'资产列表'},
                        {'title':'资产审批','url':'/asset/request/','is_menu':True,'menu_title':'资产审批'},
+                       {'title':'交接审批','url':'/asset/handover/','is_menu':True,'menu_title':'交接审批'},
                        {'title':'资产指定','url':'/asset/manage/','is_menu':False},
                        
                        {'title':'映射列表','url':'/mapped/','is_menu':True,'menu_title':'映射列表'},
@@ -176,6 +178,7 @@ def initrole():
     permissions_list=[
         {'title':'安全管理员','permissions':'资产列表'},
         {'title':'安全管理员','permissions':'资产审批'},
+        {'title':'安全管理员','permissions':'交接审批'},
         {'title':'安全管理员','permissions':'资产指定'},
         {'title':'安全管理员','permissions':'映射列表'},
         {'title':'安全管理员','permissions':'漏洞操作'},

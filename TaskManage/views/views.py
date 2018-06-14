@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_protect
 from SeMFSetting.views import paging
 from django.http import JsonResponse
 from .. import models,forms
-from .Nessustasks import sys_action
+from TaskManage.views.Scantasks import sys_action,web_action
 import time
 
 
@@ -109,11 +109,14 @@ def task_action(request,task_id,action):
             res = sys_action(request,task,action)
             if res:
                 error ='执行成功'
-                
             else:
                 error = '操作失误，请联系管理员'
         elif task.task_scanner.scanner_type == 'AWVS':
-            error = '暂未提供该类任务'
+            res = web_action(request,task,action)
+            if res:
+                error ='执行成功'
+            else:
+                error = '操作失误，请联系管理员'
         elif task.task_scanner.scanner_type == 'MobSF':
             error = '暂未提供该类任务'
     else:
@@ -129,29 +132,33 @@ def TaskSync(request):
         if request.method == 'POST':
             form = forms.TaskSyncForm(request.POST,request.FILES)
             if form.is_valid():
-                try:
-                    num_id =models.Task.objects.latest('id').id
-                except:
-                    num_id = 0
-                num_id += 1
-                task_id = str('s') + time.strftime('%Y%m%d',time.localtime(time.time())) + str(num_id)
-                task_name = form.cleaned_data['task_name']
-                task_type = '扫描同步'
                 task_scanner = form.cleaned_data['task_scanner']
-                scan_id = form.cleaned_data['scan_id']
-                task_targetinfo = form.cleaned_data['task_targetinfo']
-                
-                models.Task.objects.get_or_create(
-                    task_id=task_id,
-                    task_name=task_name,
-                    task_type=task_type,
-                    task_scanner=task_scanner,
-                    scan_id=scan_id,
-                    task_status ='1',
-                    task_user = user,
-                    task_targetinfo=task_targetinfo
-                    )
-                error = '创建成功'
+                if task_scanner.scanner_type == 'Nessus':
+                    try:
+                        num_id =models.Task.objects.latest('id').id
+                    except:
+                        num_id = 0
+                    num_id += 1
+                    task_id = str('s') + time.strftime('%Y%m%d',time.localtime(time.time())) + str(num_id)
+                    task_name = form.cleaned_data['task_name']
+                    task_type = '扫描同步'
+                    
+                    scan_id = form.cleaned_data['scan_id']
+                    task_targetinfo = form.cleaned_data['task_targetinfo']
+                    
+                    models.Task.objects.get_or_create(
+                        task_id=task_id,
+                        task_name=task_name,
+                        task_type=task_type,
+                        task_scanner=task_scanner,
+                        scan_id=scan_id,
+                        task_status ='1',
+                        task_user = user,
+                        task_targetinfo=task_targetinfo
+                        )
+                    error = '创建成功'
+                else:
+                    error = '扫描节点不支持导入'
         else:
             form = forms.TaskSyncForm()
         return render(request,'formedit.html',{'form':form,'post_url':'tasksync','error':error})
@@ -207,7 +214,7 @@ def tasktablelist(request):
             task_type__icontains = key,
             task_type__in = tasktype,
             task_status__in = taskstatus
-            ).order_by('task_status','task_endtime')
+            ).order_by('task_status','-task_endtime')
     else:
         task_list = models.Task.objects.filter(
             task_user = user,
@@ -215,7 +222,7 @@ def tasktablelist(request):
             task_type__icontains = key,
             task_type__in = tasktype,
             task_status__in = taskstatus
-            ).order_by('task_status','task_endtime')
+            ).order_by('task_status','-task_endtime')
         
     total = task_list.count()
     task_list = paging(task_list,rows,page)

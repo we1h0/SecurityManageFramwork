@@ -15,13 +15,13 @@ def Get_except_vuln(vuln_type):
     except_vuln_list = Advance_vulns.objects.filter(type=vuln_type)
     if except_vuln_list:
         for except_vuln in except_vuln_list:
-            except_vulns.append(except_vuln.name)
+            except_vulns.append(except_vuln.vuln_name)
     return except_vulns,except_vuln_list
 
 
-def add_nessus_scan(name,introduce,target,scanner_id):
+def add_nessus_scan(name,introduce,target,scanner_id,police):
     policies = Nessus.get_policies(scanner_id)
-    pid = policies['Advanced Scan']
+    pid = policies[police]
     scan = Nessus.add(name,introduce,target,pid,scanner_id)
     scan_id=scan['id']
     return scan_id

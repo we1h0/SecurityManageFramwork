@@ -12,11 +12,12 @@
       </a>
 </div>
 <div class="x-body">
-	<div class="layui-row  ">
-		<div class='layui-col-md8'>
+	<div class="layui-row">
+		<div class='layui-col-md6'>
 	       <form class="layui-form layui-col-md12 x-so">
 				<input class="layui-input" placeholder="资产名称" name="name" id="id_name">
 				<input class="layui-input" placeholder="资产标识" name="key" id="id_key">
+				<!--  
 				<div class="layui-input-inline">
 		           <select name="contrller" id ='id_area'>
 		              <option value="">所属区域</option>
@@ -24,7 +25,7 @@
 		              	<option value="{{ item.id }}">{{ item.name }}</option>
 		              {% endfor %}
 		            </select>
-		        </div>
+		        </div>-->
 		        <div class="layui-input-inline">
 		            <select name="contrller" id ='id_asset_type'>
 		              <option value="">资产类型</option>
@@ -41,16 +42,22 @@
      </div>
 
 	<xblock>
-		<div class="UserTable">
-			<button class="layui-btn " data-type="deletechoice"><i class="layui-icon">&#xe640;</i>删除资产</button>
-			<button class="layui-btn" onclick="x_admin_show('资产申请','{% url 'assetrequest' %}',600)"><i class="layui-icon layui-icon-download-circle">	</i>资产申请</button>
-		    <button class="layui-btn" onclick="x_admin_show('添加资产','{% url 'assetcreate' %}',600)"><i class="layui-icon"></i>新增资产</button>
-		    <button class="layui-btn" onclick="x_admin_show('安全巡检','{% url 'nessusscanall' %}',600)"><i class="layui-icon">&#xe672;</i>安全巡检</button>
-		    <button class="layui-btn " data-type="portchoice"><i class="layui-icon">&#xe666;</i>端口扫描</button>
-		    {% if user.is_superuser %}
-			<button class="layui-btn " data-type="descoverchoice"><i class="layui-icon">&#xe628;</i>资产发现</button>
-			<button class="layui-btn " data-type="assetuserchoice"><i class="layui-icon">&#xe601;</i>资产指定</button>
-			{% endif %}
+		<div class="UserTable layui-row">
+			<div class='layui-col-md10'>
+				<button class="layui-btn " data-type="deletechoice"><i class="layui-icon">&#xe640;</i>删除资产</button>
+				<button class="layui-btn" onclick="x_admin_show('资产申请','{% url 'assetrequest' %}',600)"><i class="layui-icon layui-icon-download-circle">	</i>资产申请</button>
+			    <button class="layui-btn" onclick="x_admin_show('添加资产','{% url 'assetcreate' %}',600)"><i class="layui-icon"></i>新增资产</button>
+			    <button class="layui-btn" onclick="x_admin_show('批量导入','{% url 'createuploadcsv' %}',600,400)"><i class="layui-icon">&#xe681;</i>批量导入</button>
+			    <button class="layui-btn " data-type="portchoice"><i class="layui-icon">&#xe666;</i>端口扫描</button>
+			    {% if user.is_superuser %}
+				<button class="layui-btn " data-type="descoverchoice"><i class="layui-icon">&#xe628;</i>资产发现</button>
+				<button class="layui-btn " data-type="assetuserchoice"><i class="layui-icon">&#xe601;</i>资产指定</button>
+				{% endif %}
+			</div>
+			<div class='layui-col-md2' align='right'>
+				<div><a href="{% url 'createoscsv' %}">os_csv模板</a>&<a href="{% url 'createwebcsv' %}">web_csv模板</a></div>
+				<div><a href="{% url 'createvulncsv' %}">vuln_csv模板</a></div>
+			</div>
 		</div>
 	</xblock>
 	
@@ -75,7 +82,7 @@ layui.use('table', function(){
       ,{field:'asset_type', title: '资产分类', sort: true}
       ,{field:'asset_status', title: '资产状态',sort: true}
       ,{field:'asset_inuse', title: '认领状态'}
-      ,{field:'asset_score', title: '重要性估值',sort: true}
+      //,{field:'asset_score', title: '风险估值',sort: true}
       ,{field:'user_email', title: '管理人员'}
       ,{field:'asset_updatetime', title: '更新时间',sort: true}
       ,{ title: '高级选项',fixed: 'right', align:'center', toolbar: '#barDemo'}
@@ -182,7 +189,7 @@ layui.use('table', function(){
         	name: $('#id_name').val()
 	    	,key: $("#id_key").val()
 	    	,type: $("#id_asset_type option:selected").val()
-	    	,area: $("#id_area option:selected").val()
+	    	//,area: $("#id_area option:selected").val()
         }
       });
     }

@@ -92,6 +92,7 @@ def vulncreate(request,asset_id):
                 num = models.Vulnerability_scan.objects.latest('id').id
             except Exception:
                 num = 0
+            num =num+1
             vuln_name = form.cleaned_data['vuln_name']
             cve_name = form.cleaned_data['cve_name']
             leave = form.cleaned_data['leave']

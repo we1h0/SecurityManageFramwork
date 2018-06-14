@@ -1,0 +1,113 @@
+{% extends "index.html" %} 
+<meta charset="UTF-8">
+
+{% block index %}
+{% csrf_token %}
+<div class="x-nav">
+	<span class="layui-breadcrumb">
+        <a href="">资产审批</a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+      </a>
+</div>
+<div class="x-body">
+	<div class="layui-row">
+       <div class='layui-col-md6'>
+	       <form class="layui-form layui-col-md12 x-so">
+				<input class="layui-input" placeholder="邮箱地址" name="email" id="id_email">
+				<div class="layui-input-inline">
+		            <select name="contrller" id ='id_status'>
+		              <option value="">审批状态</option>
+		              <option value="0">待审批</option>
+		              <option value="1">审批通过</option>
+		              <option value="2">审批拒绝</option>
+		            </select>
+		        </div>
+	       </form>
+	     </div>
+	     <div class='UserTable'>
+	       <button class="layui-btn"  data-type="reload"><i class="layui-icon" >&#xe615;</i></button>
+	     </div>
+     </div>
+	<table class="layui-hide" id="handover_table" lay-filter="handover"></table> 
+</div>
+<script>
+var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+layui.use('table', function(){
+  var table = layui.table;
+	
+  //方法级渲染
+  table.render({
+    elem: '#handover_table'
+    ,url: "{% url 'assethandoverlist' %}"
+    ,method: 'post'
+    ,where: {'csrfmiddlewaretoken':csrf}
+    ,cols: [[
+      {checkbox: true, fixed: true}
+      ,{field:'request_user', title: '申请账号', sort: true, fixed: true}
+      ,{field:'dst_email', title: '交接对象'}
+      ,{field:'reason', title: '申请理由', sort: true}
+      ,{field:'request_updatetime', title: '更新时间'}
+      ,{field:'status', title: '审批状态'}
+      ,{ title: '审批操作',fixed: 'right', align:'center', toolbar: '#barDemo'}
+    ]]
+    ,id: 'testReload'
+    ,page: true
+  });
+  
+  table.on('tool(handover)', function(obj){
+    var data = obj.data;
+    //var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+    if(obj.event === 'access'){
+    	layer.confirm('该操作为敏感操作<br>点击确认，同意用户'+data.request_user+'的资产交接申请，同时禁用该账号',function(index){
+    		$.post("{% url 'assethandoveraction' %}",{'asset_handover_id':data.id,'action':'access','csrfmiddlewaretoken': csrf},function(res){
+        		layer.msg(res.error);
+        		setTimeout(function(){
+		    		location.replace(location.href);
+		    	},2000)
+        	});
+    	})
+    } else if(obj.event === 'deny'){
+    	layer.confirm('该操作为敏感操作<br>点击确认，拒绝用户'+ data.request_user + '的资产交接申请',function(index){
+    		$.post("{% url 'assethandoveraction' %}",{'asset_handover_id':data.id,'action':'deny','csrfmiddlewaretoken': csrf},function(res){
+        		layer.msg(res.error);
+        		setTimeout(function(){
+		    		location.replace(location.href);
+		    	},2000)
+        	});
+    	})
+    }
+  });
+  var $ = layui.$, active = {
+   reload: function(){
+	     //执行重载
+	     table.reload('testReload', {
+	       page: {
+	         curr: 1 //重新从第 1 页开始
+	       }
+	       ,where: {
+	       	email: $('#id_email').val()
+	    	,status: $("#id_status option:selected").val()
+	       }
+	     });
+	   }
+  };
+  $('.UserTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+</script>
+
+<script type="text/html" id="barDemo">
+	{% verbatim %}
+	{{# if(d.status=='待审批'){ }}
+		<a class="layui-btn layui-btn-xs" lay-event="access">同意</a>
+  		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="deny">拒绝</a>
+	{{# } else { }}
+		{{ d.status }}
+	{{# } }}
+	{% endverbatim %}
+</script>
+{% endblock %}

@@ -87,7 +87,7 @@ layui.use('table', function(){
     	for(var i=0;i<data.length;i++){
     		list[i] = data[i].mail
     	}
-    	layer.confirm('该操作为敏感操作<br>点击确认，禁用用户'+data.email+'的使用权限，该操作是被禁用用户无法登陆',function(index){
+    	layer.confirm('该操作为敏感操作<br>点击确认，禁用用户'+data.mail+'的使用权限，该操作使被禁用用户无法登陆',function(index){
 		    $.post("{% url 'userdisactivate' %}",{'user_list':JSON.stringify(list),'action':'stop','csrfmiddlewaretoken': csrf},function(res){
 	    		layer.msg(res.error);
 	    		setTimeout(function(){
@@ -104,7 +104,7 @@ layui.use('table', function(){
 	 	for(var i=0;i<data.length;i++){
 	 		list[i] = data[i].mail
 	 	}
-	 	layer.confirm('该操作为敏感操作<br>点击确认，禁用用户'+data.email+'的使用权限，该操作是被禁用用户无法登陆',function(index){
+	 	layer.confirm('该操作为敏感操作<br>点击确认，启用用户'+data.mail+'的使用权限，该操作使用户可以登录',function(index){
 		    $.post("{% url 'userdisactivate' %}",{'user_list':JSON.stringify(list),'action':'start','csrfmiddlewaretoken': csrf},function(res){
 	    		layer.msg(res.error);
 	    		setTimeout(function(){

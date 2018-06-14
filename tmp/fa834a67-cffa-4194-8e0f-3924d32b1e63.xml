@@ -1,0 +1,924 @@
+<?xml version="1.0"?>
+<ScanGroup ExportedOn="12/06/2018, 13:55:38">
+<Scan>
+        <Name><![CDATA[scan_name]]></Name>
+        <ShortName><![CDATA[scan_short_name]]></ShortName>
+        <StartURL><![CDATA[https://semf.isoftstone.com]]></StartURL>
+        <StartTime><![CDATA[12/06/2018, 13:48:19]]></StartTime>
+        <FinishTime><![CDATA[12/06/2018, 13:54:38]]></FinishTime>
+        <ScanTime><![CDATA[6 minutes, 12 seconds]]></ScanTime>
+        <Aborted><![CDATA[False]]></Aborted>
+        <Responsive><![CDATA[]]></Responsive>
+        <Banner><![CDATA[]]></Banner>
+        <Os><![CDATA[]]></Os>
+        <WebServer><![CDATA[]]></WebServer>
+        <Technologies>
+            <![CDATA[
+                
+            ]]>
+        </Technologies>
+        <Crawler StartUrl="https://semf.isoftstone.com">
+            <Cookies>
+                
+            </Cookies>
+            <SiteFiles>
+<SiteFile id="1">
+                    <Name><![CDATA[https://semf.isoftstone.com/]]></Name>
+                    <URL><![CDATA[/]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="2">
+                    <Name><![CDATA[auth]]></Name>
+                    <URL><![CDATA[/auth]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/auth]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="3">
+                    <Name><![CDATA[login]]></Name>
+                    <URL><![CDATA[/auth/login]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/auth/login]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="4">
+                    <Name><![CDATA[user]]></Name>
+                    <URL><![CDATA[/auth/user]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/auth/user]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="5">
+                    <Name><![CDATA[regist]]></Name>
+                    <URL><![CDATA[/auth/user/regist]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/auth/user/regist]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="6">
+                    <Name><![CDATA[regist]]></Name>
+                    <URL><![CDATA[/auth/user/regist/regist]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/auth/user/regist/regist]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="7">
+                    <Name><![CDATA[resetpsd]]></Name>
+                    <URL><![CDATA[/auth/user/resetpsd]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/auth/user/resetpsd]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="8">
+                    <Name><![CDATA[resetpsd]]></Name>
+                    <URL><![CDATA[/auth/user/resetpsd/resetpsd]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/auth/user/resetpsd/resetpsd]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="9">
+                    <Name><![CDATA[static]]></Name>
+                    <URL><![CDATA[/static]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="10">
+                    <Name><![CDATA[css]]></Name>
+                    <URL><![CDATA[/static/css]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/css]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="11">
+                    <Name><![CDATA[bootstrap.min.css]]></Name>
+                    <URL><![CDATA[/static/css/bootstrap.min.css]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/css/bootstrap.min.css]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="12">
+                    <Name><![CDATA[style.css]]></Name>
+                    <URL><![CDATA[/static/css/style.css]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/css/style.css]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="13">
+                    <Name><![CDATA[fonts]]></Name>
+                    <URL><![CDATA[/static/fonts]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/fonts]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="14">
+                    <Name><![CDATA[icons]]></Name>
+                    <URL><![CDATA[/static/fonts/icons]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/fonts/icons]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="15">
+                    <Name><![CDATA[opan-sans]]></Name>
+                    <URL><![CDATA[/static/fonts/opan-sans]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/fonts/opan-sans]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="16">
+                    <Name><![CDATA[img]]></Name>
+                    <URL><![CDATA[/static/img]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/img]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="17">
+                    <Name><![CDATA[body]]></Name>
+                    <URL><![CDATA[/static/img/body]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/img/body]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="18">
+                    <Name><![CDATA[editor]]></Name>
+                    <URL><![CDATA[/static/img/editor]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/img/editor]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="19">
+                    <Name><![CDATA[filemanager]]></Name>
+                    <URL><![CDATA[/static/img/filemanager]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/img/filemanager]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="20">
+                    <Name><![CDATA[icon]]></Name>
+                    <URL><![CDATA[/static/img/filemanager/icon]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/img/filemanager/icon]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="21">
+                    <Name><![CDATA[icon]]></Name>
+                    <URL><![CDATA[/static/img/icon]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/img/icon]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="22">
+                    <Name><![CDATA[js]]></Name>
+                    <URL><![CDATA[/static/js]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/js]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="23">
+                    <Name><![CDATA[bootstrap.min.js]]></Name>
+                    <URL><![CDATA[/static/js/bootstrap.min.js]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/js/bootstrap.min.js]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+<SiteFile id="24">
+                    <Name><![CDATA[jquery.min.js]]></Name>
+                    <URL><![CDATA[/static/js/jquery.min.js]]></URL>
+                    <FullURL><![CDATA[https://semf.isoftstone.com/static/js/jquery.min.js]]></FullURL>
+                    <Inputs>
+                        
+                    </Inputs>
+                    <Variations>
+                        
+                    </Variations>
+                </SiteFile>
+            </SiteFiles>
+        </Crawler>
+        <ReportItems>
+<ReportItem id="1" color="blue">
+                <Name><![CDATA[Cookie(s) without HttpOnly flag set]]></Name>
+                <ModuleName><![CDATA[Crawler]]></ModuleName>
+                <Details><![CDATA[Cookies found: <ul><li>Name: csrftoken, Domain: semf.isoftstone.com</li></ul>]]></Details>
+                <Affects><![CDATA[/]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[low]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[None]]></Impact>
+                <Description><![CDATA[This cookie does not have the HTTPOnly flag set. When a cookie is set with the HTTPOnly flag, it instructs the browser that the cookie can only be accessed by the server and not by client-side scripts. This is an important security protection for session cookies.]]></Description>
+                <Recommendation><![CDATA[If possible, you should set the HTTPOnly flag for this cookie.]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[GET / HTTP/1.1
+Pragma: no-cache
+Cache-Control: no-cache
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-16"><![CDATA[CWE-16]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:N/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[0.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <References>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="2" color="blue">
+                <Name><![CDATA[Cookie(s) without Secure flag set]]></Name>
+                <ModuleName><![CDATA[Crawler]]></ModuleName>
+                <Details><![CDATA[Cookies found: <ul><li>Name: csrftoken, Domain: semf.isoftstone.com</li></ul>]]></Details>
+                <Affects><![CDATA[/]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[low]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[None]]></Impact>
+                <Description><![CDATA[This cookie does not have the Secure flag set. When a cookie is set with the Secure flag, it instructs the browser that the cookie can only be accessed over secure SSL channels. This is an important security protection for session cookies.]]></Description>
+                <Recommendation><![CDATA[If possible, you should set the Secure flag for this cookie.]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[GET / HTTP/1.1
+Pragma: no-cache
+Cache-Control: no-cache
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-16"><![CDATA[CWE-16]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:N/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[0.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <References>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="3" color="blue">
+                <Name><![CDATA[Login page password-guessing attack]]></Name>
+                <ModuleName><![CDATA[Scripting (Html_Authentication_Audit.script)]]></ModuleName>
+                <Details><![CDATA[The scanner tested 10 invalid credentials and no account lockout was detected.]]></Details>
+                <Affects><![CDATA[/auth/user]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[low]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[An attacker may attempt to discover a weak password by systematically trying every possible combination of letters, numbers, and symbols until it discovers the one correct combination that works.]]></Impact>
+                <Description><![CDATA[A common threat web developers face is a password-guessing attack known as a brute force attack. A brute-force attack is an attempt to discover a password by systematically trying every possible combination of letters, numbers, and symbols until you discover the one correct combination that works. <br/><br/>
+This login page doesn't have any protection against password-guessing attacks (brute force attacks). It's recommended to implement some type of account lockout after a defined number of incorrect password attempts. Consult Web references for more information about fixing this problem.]]></Description>
+                <Recommendation><![CDATA[It's recommended to implement some type of account lockout after a defined number of incorrect password attempts.]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[POST /auth/user/ HTTP/1.1
+Content-Length: 128
+Content-Type: application/x-www-form-urlencoded
+Referer: https://semf.isoftstone.com
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+submit=&amp;csrfmiddlewaretoken=RgRpOrNwoNNEjYw9b2SriO7h1szSHYXLPKsJqzxV5GZKG2GHbt4zxznqcjGlLMGq&amp;password=vgl42as0&amp;username=RUmHymHm]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-307"><![CDATA[CWE-307]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:P/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[5.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[Partial]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <CVSS3>
+                  <Descriptor><![CDATA[CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L]]></Descriptor>
+                  <Score><![CDATA[5.3]]></Score>
+                  <TempScore><![CDATA[]]></TempScore>
+                  <EnvScore><![CDATA[]]></EnvScore>
+                  <AV><![CDATA[Network]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <PR><![CDATA[None]]></PR>
+                  <UI><![CDATA[None]]></UI>
+                  <S><![CDATA[Unchanged]]></S>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[Low]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS3>
+                
+                <References>
+                    
+                    <Reference>
+                      <Database><![CDATA[Blocking Brute Force Attacks]]></Database>
+                      <URL><![CDATA[http://www.owasp.org/index.php/Blocking_Brute_Force_Attacks]]></URL>
+                    </Reference>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="4" color="blue">
+                <Name><![CDATA[Possible sensitive directories]]></Name>
+                <ModuleName><![CDATA[Scripting (Possible_Sensitive_Directories.script)]]></ModuleName>
+                <Details><![CDATA[]]></Details>
+                <Affects><![CDATA[/static/img/filemanager]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[low]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[This directory may expose sensitive information that could help a malicious user to prepare more advanced attacks.]]></Impact>
+                <Description><![CDATA[A possible sensitive directory has been found. This directory is not directly linked from the website.This check looks for common sensitive resources like backup directories, database dumps, administration pages, temporary directories. Each one of these directories could help an attacker to learn more about his target.]]></Description>
+                <Recommendation><![CDATA[Restrict access to this directory or remove it from the website.]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[GET /static/img/filemanager HTTP/1.1
+Accept: acunetix/wvs
+Range: bytes=0-99999
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-200"><![CDATA[CWE-200]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:P/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[5.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[Partial]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <CVSS3>
+                  <Descriptor><![CDATA[CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[7.5]]></Score>
+                  <TempScore><![CDATA[]]></TempScore>
+                  <EnvScore><![CDATA[]]></EnvScore>
+                  <AV><![CDATA[Network]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <PR><![CDATA[None]]></PR>
+                  <UI><![CDATA[None]]></UI>
+                  <S><![CDATA[Unchanged]]></S>
+                  <C><![CDATA[High]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS3>
+                
+                <References>
+                    
+                    <Reference>
+                      <Database><![CDATA[Web Server Security and Database Server Security]]></Database>
+                      <URL><![CDATA[http://www.acunetix.com/websitesecurity/webserver-security/]]></URL>
+                    </Reference>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="5" color="green">
+                <Name><![CDATA[Broken links]]></Name>
+                <ModuleName><![CDATA[Crawler]]></ModuleName>
+                <Details><![CDATA[For a complete list of URLs linking to this file, go to Site Structure &gt; Locate and select the file (marked as &quot;Not Found&quot;) &gt; select Referrers Tab from the bottom of the Information pane.]]></Details>
+                <Affects><![CDATA[/auth/login]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[informational]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[Problems navigating the site.]]></Impact>
+                <Description><![CDATA[A broken link refers to any link that should take you to a document, image or webpage, that actually results in an error. This page was linked from the website but it is inaccessible.]]></Description>
+                <Recommendation><![CDATA[Remove the links to this file or make it accessible.]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[GET /auth/login HTTP/1.1
+Pragma: no-cache
+Cache-Control: no-cache
+Referer: https://semf.isoftstone.com/
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-16"><![CDATA[CWE-16]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:N/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[0.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <References>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="6" color="green">
+                <Name><![CDATA[Broken links]]></Name>
+                <ModuleName><![CDATA[Crawler]]></ModuleName>
+                <Details><![CDATA[For a complete list of URLs linking to this file, go to Site Structure &gt; Locate and select the file (marked as &quot;Not Found&quot;) &gt; select Referrers Tab from the bottom of the Information pane.]]></Details>
+                <Affects><![CDATA[/auth/user]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[informational]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[Problems navigating the site.]]></Impact>
+                <Description><![CDATA[A broken link refers to any link that should take you to a document, image or webpage, that actually results in an error. This page was linked from the website but it is inaccessible.]]></Description>
+                <Recommendation><![CDATA[Remove the links to this file or make it accessible.]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[GET /auth/user HTTP/1.1
+Pragma: no-cache
+Cache-Control: no-cache
+Referer: https://semf.isoftstone.com/auth
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-16"><![CDATA[CWE-16]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:N/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[0.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <References>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="7" color="green">
+                <Name><![CDATA[Password type input with auto-complete enabled]]></Name>
+                <ModuleName><![CDATA[Crawler]]></ModuleName>
+                <Details><![CDATA[Password type input(s): <strong>password</strong> from form with ID <strong>login_form</strong> with action <strong>user</strong> have autocomplete enabled.]]></Details>
+                <Affects><![CDATA[/auth/user]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[informational]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[Possible sensitive information disclosure.]]></Impact>
+                <Description><![CDATA[When a new name and password is entered in a form and the form is submitted, the browser asks if the password should be saved.Thereafter when the form is displayed, the name and password are filled in automatically or are completed as the name is entered. An attacker with local access could obtain the cleartext password from the browser cache.]]></Description>
+                <Recommendation><![CDATA[The password auto-complete should be disabled in sensitive applications. <br/>To disable auto-complete, you may use a code similar to: <pre><code>&lt;INPUT TYPE=&quot;password&quot; AUTOCOMPLETE=&quot;off&quot;&gt;</code></pre>]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[GET /auth/user/ HTTP/1.1
+Pragma: no-cache
+Cache-Control: no-cache
+Referer: https://semf.isoftstone.com/auth/user/
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-200"><![CDATA[CWE-200]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:N/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[0.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <CVSS3>
+                  <Descriptor><![CDATA[CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[7.5]]></Score>
+                  <TempScore><![CDATA[]]></TempScore>
+                  <EnvScore><![CDATA[]]></EnvScore>
+                  <AV><![CDATA[Network]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <PR><![CDATA[None]]></PR>
+                  <UI><![CDATA[None]]></UI>
+                  <S><![CDATA[Unchanged]]></S>
+                  <C><![CDATA[High]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS3>
+                
+                <References>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="8" color="green">
+                <Name><![CDATA[Password type input with auto-complete enabled]]></Name>
+                <ModuleName><![CDATA[Crawler]]></ModuleName>
+                <Details><![CDATA[Password type input(s): <strong>password</strong> from form with ID <strong>login_form</strong> with action <strong>5a53c3e87d0b2f3ae2ad4d4a6b1fd9d4</strong> have autocomplete enabled.]]></Details>
+                <Affects><![CDATA[/auth/user]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[informational]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[Possible sensitive information disclosure.]]></Impact>
+                <Description><![CDATA[When a new name and password is entered in a form and the form is submitted, the browser asks if the password should be saved.Thereafter when the form is displayed, the name and password are filled in automatically or are completed as the name is entered. An attacker with local access could obtain the cleartext password from the browser cache.]]></Description>
+                <Recommendation><![CDATA[The password auto-complete should be disabled in sensitive applications. <br/>To disable auto-complete, you may use a code similar to: <pre><code>&lt;INPUT TYPE=&quot;password&quot; AUTOCOMPLETE=&quot;off&quot;&gt;</code></pre>]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[POST /auth/user/ HTTP/1.1
+Pragma: no-cache
+Cache-Control: no-cache
+Referer: https://semf.isoftstone.com/auth/user/
+Content-Length: 136
+Content-Type: application/x-www-form-urlencoded
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+submit=&amp;csrfmiddlewaretoken=EhtXcijoG4xA2NnPHwiwyCsipx38tML7CL4hOq3NnXJGpRxnHXuENnIrAoaBxAuM&amp;password=g00dPa%24%24w0rD&amp;username=oecxpmqt]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-200"><![CDATA[CWE-200]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:N/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[0.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <CVSS3>
+                  <Descriptor><![CDATA[CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[7.5]]></Score>
+                  <TempScore><![CDATA[]]></TempScore>
+                  <EnvScore><![CDATA[]]></EnvScore>
+                  <AV><![CDATA[Network]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <PR><![CDATA[None]]></PR>
+                  <UI><![CDATA[None]]></UI>
+                  <S><![CDATA[Unchanged]]></S>
+                  <C><![CDATA[High]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS3>
+                
+                <References>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="9" color="green">
+                <Name><![CDATA[Password type input with auto-complete enabled]]></Name>
+                <ModuleName><![CDATA[Crawler]]></ModuleName>
+                <Details><![CDATA[Password type input(s): <strong>password</strong> from form with ID <strong>login_form</strong> with action <strong>6a9dc524ff29df898539244a518fd2e5</strong> have autocomplete enabled.]]></Details>
+                <Affects><![CDATA[/auth/user]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[informational]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[Possible sensitive information disclosure.]]></Impact>
+                <Description><![CDATA[When a new name and password is entered in a form and the form is submitted, the browser asks if the password should be saved.Thereafter when the form is displayed, the name and password are filled in automatically or are completed as the name is entered. An attacker with local access could obtain the cleartext password from the browser cache.]]></Description>
+                <Recommendation><![CDATA[The password auto-complete should be disabled in sensitive applications. <br/>To disable auto-complete, you may use a code similar to: <pre><code>&lt;INPUT TYPE=&quot;password&quot; AUTOCOMPLETE=&quot;off&quot;&gt;</code></pre>]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[POST /auth/user/ HTTP/1.1
+Pragma: no-cache
+Cache-Control: no-cache
+Referer: https://semf.isoftstone.com/auth/user/
+Content-Length: 136
+Content-Type: application/x-www-form-urlencoded
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+submit=&amp;csrfmiddlewaretoken=vordmUq90W0qCvBqet2HeZhi5ZnRGvVStS2xY2ayHPcwZzLYeUePtKxrgQukKjEx&amp;password=g00dPa%24%24w0rD&amp;username=mbbuhfvn]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-200"><![CDATA[CWE-200]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:N/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[0.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <CVSS3>
+                  <Descriptor><![CDATA[CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[7.5]]></Score>
+                  <TempScore><![CDATA[]]></TempScore>
+                  <EnvScore><![CDATA[]]></EnvScore>
+                  <AV><![CDATA[Network]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <PR><![CDATA[None]]></PR>
+                  <UI><![CDATA[None]]></UI>
+                  <S><![CDATA[Unchanged]]></S>
+                  <C><![CDATA[High]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS3>
+                
+                <References>
+                    
+                </References>
+            </ReportItem>
+<ReportItem id="10" color="green">
+                <Name><![CDATA[Password type input with auto-complete enabled]]></Name>
+                <ModuleName><![CDATA[Crawler]]></ModuleName>
+                <Details><![CDATA[Password type input(s): <strong>password</strong> from form with ID <strong>login_form</strong> with action <strong>1b20864d4754e7a09ceca7a311f3aabd</strong> have autocomplete enabled.]]></Details>
+                <Affects><![CDATA[/auth/user]]></Affects>
+                <Parameter><![CDATA[]]></Parameter>
+                <AOP_SourceFile><![CDATA[]]></AOP_SourceFile>
+                <AOP_SourceLine></AOP_SourceLine>
+                <AOP_Additional><![CDATA[]]></AOP_Additional>
+                <IsFalsePositive><![CDATA[]]></IsFalsePositive>
+                <Severity><![CDATA[informational]]></Severity>
+                <Type><![CDATA[]]></Type>
+                <Impact><![CDATA[Possible sensitive information disclosure.]]></Impact>
+                <Description><![CDATA[When a new name and password is entered in a form and the form is submitted, the browser asks if the password should be saved.Thereafter when the form is displayed, the name and password are filled in automatically or are completed as the name is entered. An attacker with local access could obtain the cleartext password from the browser cache.]]></Description>
+                <Recommendation><![CDATA[The password auto-complete should be disabled in sensitive applications. <br/>To disable auto-complete, you may use a code similar to: <pre><code>&lt;INPUT TYPE=&quot;password&quot; AUTOCOMPLETE=&quot;off&quot;&gt;</code></pre>]]></Recommendation>
+                <TechnicalDetails>
+                    <Request><![CDATA[POST /auth/user/ HTTP/1.1
+Pragma: no-cache
+Cache-Control: no-cache
+Referer: https://semf.isoftstone.com/auth/user/
+Content-Length: 136
+Content-Type: application/x-www-form-urlencoded
+Cookie: csrftoken=9EIEfvmsuNwldKpnOuHvU4edbRVIlcBb78jYRD6RbGIrAOzVOVTD9PummI2bp0kQ
+Host: semf.isoftstone.com
+Connection: Keep-alive
+Accept-Encoding: gzip,deflate
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21
+Accept: */*
+submit=&amp;csrfmiddlewaretoken=RgRpOrNwoNNEjYw9b2SriO7h1szSHYXLPKsJqzxV5GZKG2GHbt4zxznqcjGlLMGq&amp;password=g00dPa%24%24w0rD&amp;username=cynwgafm]]></Request>
+                    <Response><![CDATA[]]></Response>
+                </TechnicalDetails>
+                
+                <CWE id="CWE-200"><![CDATA[CWE-200]]></CWE>
+                
+                <CVEList></CVEList>
+                <CVSS>
+                  <Descriptor><![CDATA[AV:N/AC:L/Au:N/C:N/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[0.0]]></Score>
+                  <AV><![CDATA[Network_Accessible]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <Au><![CDATA[None]]></Au>
+                  <C><![CDATA[None]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS>
+                
+                <CVSS3>
+                  <Descriptor><![CDATA[CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N]]></Descriptor>
+                  <Score><![CDATA[7.5]]></Score>
+                  <TempScore><![CDATA[]]></TempScore>
+                  <EnvScore><![CDATA[]]></EnvScore>
+                  <AV><![CDATA[Network]]></AV>
+                  <AC><![CDATA[Low]]></AC>
+                  <PR><![CDATA[None]]></PR>
+                  <UI><![CDATA[None]]></UI>
+                  <S><![CDATA[Unchanged]]></S>
+                  <C><![CDATA[High]]></C>
+                  <I><![CDATA[None]]></I>
+                  <A><![CDATA[None]]></A>
+                  <E><![CDATA[]]></E>
+                  <RL><![CDATA[]]></RL>
+                  <RC><![CDATA[]]></RC>
+                </CVSS3>
+                
+                <References>
+                    
+                </References>
+            </ReportItem>
+        </ReportItems>
+    </Scan>
+</ScanGroup>
