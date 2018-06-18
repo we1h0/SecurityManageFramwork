@@ -4,7 +4,7 @@
 企业内网安全管理平台，包含资产管理，漏洞管理，账号管理，知识库管、安全扫描自动化功能模块，可用于企业内部的安全管理。
 本平台旨在帮助安全人员少，业务线繁杂，周期巡检困难，自动化程度低的甲方，更好的实现企业内部的安全管理。
 本项目原地址:https://gitee.com/gy071089/SecurityManageFramwork<br />
-作者:[残源](https://my.oschina.net/u/3867729/blog/)<br />
+作者:[残源](https://my.oschina.net/u/3867729)<br />
 
 #### 软件架构
 后端系统 python3 + django2 + rabbitmq 实现。
