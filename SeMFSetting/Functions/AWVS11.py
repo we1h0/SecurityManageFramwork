@@ -111,7 +111,6 @@ def getscan(scanner_id):
     return scans
 
 def getscanid(target_id,scanner_id):
-    
     scans  = connect('GET', '/api/v1/scans',scanner_id)
     for scan in scans['scans']:
         if scan['target_id'] == target_id:

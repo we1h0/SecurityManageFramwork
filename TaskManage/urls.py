@@ -14,6 +14,8 @@ urlpatterns = [
     path('user/nessus/scan/',Scantasks.ScanAll,name='scantask'),
     path('user/details/<str:task_id>/',views.taskdetails,name='taskdetails'),
     
+    path('user/scantaskchoice/<str:action>/',Scantasks.scan_task,name='taskscanchoice'),
+    
     path('user/scan/action/<str:task_id>/<str:action>/',views.task_action,name='taskaction'),
     path('user/task/action/<str:task_id>/<str:action>/',views.taskrequestaction,name='taskrequestaction'),
     

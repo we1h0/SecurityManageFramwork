@@ -40,28 +40,37 @@ def asset_port(user_id,asset_id_list):
             ip = asset.asset_key
             if checkip(ip):
                 port_list =nmap.nmap_host_all(ip)
-                for port_info in port_list.keys():
-                    port = port_info
-                    name = port_list[port_info].get('name')
-                    product = port_list[port_info].get('product')
-                    version =  port_list[port_info].get('version')
-                    port_get = models.Port_Info.objects.get_or_create(
-                        port=port,
-                        asset = asset,
-                        )
-                    if port_get[1]:
-                        port = port_get[0]
-                        port.product=product
-                        port.name = name
-                        port.version=version
-                        port.save()
-                data_manage={
-                              'notice_title':'资产发现通知',
-                              'notice_body':'您对'+ ip +'的端口发现任务完成',
-                              'notice_url':'/asset/user/',
-                              'notice_type':'notice',
-                              }
-                notice_add(user,data_manage)
+                if port_list!=0:
+                    for port_info in port_list.keys():
+                        port = port_info
+                        name = port_list[port_info].get('name')
+                        product = port_list[port_info].get('product')
+                        version =  port_list[port_info].get('version')
+                        port_get = models.Port_Info.objects.get_or_create(
+                            port=port,
+                            asset = asset,
+                            )
+                        if port_get[1]:
+                            port = port_get[0]
+                            port.product=product
+                            port.name = name
+                            port.version=version
+                            port.save()
+                    data_manage={
+                                  'notice_title':'资产发现通知',
+                                  'notice_body':'您对'+ ip +'的端口发现任务完成',
+                                  'notice_url':'/asset/user/',
+                                  'notice_type':'notice',
+                                  }
+                    notice_add(user,data_manage)
+                else:
+                    data_manage={
+                                  'notice_title':'资产发现通知',
+                                  'notice_body':'您对'+ ip +'的端口发现任务完成,该主机未开放端口或网络不可达',
+                                  'notice_url':'/asset/user/',
+                                  'notice_type':'notice',
+                                  }
+                    notice_add(user,data_manage)
             else:
                 return False
         else:
