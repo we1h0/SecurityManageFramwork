@@ -7,7 +7,7 @@
 =======
 本项目原地址:https://gitee.com/gy071089/SecurityManageFramwork<br />
 作者:[残源](https://my.oschina.net/u/3867729)<br />
->>>>>>> 753de5921c64ca61d05430e6a45c7972b923ce54
+
 
 #### 软件架构
 后端系统 python3 + django2 + rabbitmq 实现。
