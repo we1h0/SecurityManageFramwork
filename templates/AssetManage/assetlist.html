@@ -49,6 +49,7 @@
 			    <button class="layui-btn" onclick="x_admin_show('添加资产','{% url 'assetcreate' %}',600)"><i class="layui-icon"></i>新增资产</button>
 			    <button class="layui-btn" onclick="x_admin_show('批量导入','{% url 'createuploadcsv' %}',600,400)"><i class="layui-icon">&#xe681;</i>批量导入</button>
 			    <button class="layui-btn " data-type="portchoice"><i class="layui-icon">&#xe666;</i>端口扫描</button>
+			    <button class="layui-btn " data-type="scanchoice"><i class="layui-icon">&#xe672;</i>安全扫描</button>
 			    {% if user.is_superuser %}
 				<button class="layui-btn " data-type="descoverchoice"><i class="layui-icon">&#xe628;</i>资产发现</button>
 				<button class="layui-btn " data-type="assetuserchoice"><i class="layui-icon">&#xe601;</i>资产指定</button>
@@ -178,6 +179,17 @@ layui.use('table', function(){
 	    	url = url.replace(/key/,res.assetuser_id);
 	    	x_admin_show('资产指定',url,600);
     	});
+	 }
+	,scanchoice: function(){ //获取选中数据
+	    var checkStatus = table.checkStatus('testReload')
+	    ,data = checkStatus.data
+	    ,list=';';
+	 	for(var i=0;i<data.length;i++){
+	 		list=list + data[i].asset_id +';'
+	 	}
+    	url = "{% url 'taskscanchoice' 'key' %}";
+    	url = url.replace(/key/,list);
+    	x_admin_show('新建扫描',url,600);
 	 }
   	,reload: function(){
       //执行重载
