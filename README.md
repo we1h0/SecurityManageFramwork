@@ -1,11 +1,13 @@
-# SecurityManageFramwork-SeMF
-
+# SecurityManageFramwork-SeMF [![License](https://img.shields.io/aur/license/yaourt.svg)](https://github.com/zhaoweiho/SecurityManageFramwork/blob/master/LICENSE)
+----------
 #### 项目介绍
-企业内网安全管理平台，包含资产管理，漏洞管理，账号管理，知识库管、安全扫描自动化功能模块，可用于企业内部的安全管理。
-本平台旨在帮助安全人员少，业务线繁杂，周期巡检困难，自动化程度低的甲方，更好的实现企业内部的安全管理。
+**SEMF**是一款适用于企业内网`安全管理平台，包含资产管理，漏洞管理，账号管理，知识库管、安全扫描自动化功能模块，可用于企业内部的安全管理`。
+**本平台旨在帮助安全人员少，业务线繁杂，周期巡检困难，自动化程度低的甲方，更好的实现企业内部的安全管理。本软件只用作企业内部IT资产管理，无攻击性行为。请使用者遵守《[中华人民共和国网络安全法](http://www.npc.gov.cn/npc/xinwen/2016-11/07/content_2001605.htm)》,勿将SEMF用于非授权测试，作者不负任何连带法律责任。**
 > 喜欢请点 Star，如果不打算贡献，千万别 Fork
-<br />
-本项目原地址:https://gitee.com/gy071089/SecurityManageFramwork<br />
+
+
+本项目原地址:https://gitee.com/gy071089/SecurityManageFramwork
+
 作者:[残源](https://my.oschina.net/u/3867729)<br />
 
 
