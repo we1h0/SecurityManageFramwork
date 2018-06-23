@@ -36,21 +36,21 @@
 
 1. 资产管理模块,以下为管理员界面功能，其他类型用户根据定义的权限生成菜单和界面
     <br>登录注册页</br>
-    ![登录注册页](https://github.com/zhaoweiho/SecurityManageFramwork/tree/master/doc/image/113258_154ca8d5_1390378.png "屏幕截图.png")
+    ![登录注册页](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113258_154ca8d5_1390378.png "屏幕截图.png")
     <br>系统首页</br>
-    ![系统首页](https://github.com/zhaoweiho/SecurityManageFramwork/tree/master/doc/image/113454_07c46a58_1390378.png "屏幕截图.png")
+    ![系统首页](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113454_07c46a58_1390378.png "屏幕截图.png")
     <br>资产管理</br>
-    ![资产管理](https://github.com/zhaoweiho/SecurityManageFramwork/tree/master/doc/image/113543_6a6973ec_1390378.png "屏幕截图.png")
+    ![资产管理](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113543_6a6973ec_1390378.png "屏幕截图.png")
     <br>漏洞管理</br>
-    ![漏洞管理](https://github.com/zhaoweiho/SecurityManageFramwork/tree/master/doc/image/113714_90826f30_1390378.png "屏幕截图.png")
+    ![漏洞管理](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113714_90826f30_1390378.png "屏幕截图.png")
     <br>资产详情 ，这里的资产详情可在后台自定义，不同类型资产显示的不一样，就不一一截图了</br>
-    ![资产详情](https://github.com/zhaoweiho/SecurityManageFramwork/tree/master/doc/image/114021_ef591ca3_1390378.png "屏幕截图.png")
+    ![资产详情](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/114021_ef591ca3_1390378.png "屏幕截图.png")
     <br>报表中心，当前仅显示几类，后续会继续添加</br>
-    ![报表中心](https://github.com/zhaoweiho/SecurityManageFramwork/tree/master/doc/image/114106_3cf15048_1390378.png "屏幕截图.png")
+    ![报表中心](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/114106_3cf15048_1390378.png "屏幕截图.png")
     
 #### 参与贡献
 
 1.  本项目当前仅自己维护，希望有志之士可协助完善系统，详情可加入qq群，联系群主即可
-    ![qq交流群](https://github.com/zhaoweiho/SecurityManageFramwork/tree/master/doc/image/114130_0e8d0451_1390378.png "屏幕截图.png")
+    ![qq交流群](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/114130_0e8d0451_1390378.png "屏幕截图.png")
 2.  如有其他定制化需求，可发邮件至gy071089@outlook.com联系我
 
