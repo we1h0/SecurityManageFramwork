@@ -49,7 +49,7 @@
     ![资产管理](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113543_6a6973ec_1390378.png "屏幕截图.png")
 -    资产详情
     ![资产详情](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/114021_ef591ca3_1390378.png "屏幕截图.png")
--    <br>漏洞管理</br>
+-    漏洞管理
     ![漏洞管理](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113714_90826f30_1390378.png "屏幕截图.png")
 -    报表中心
     ![报表中心](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/114106_3cf15048_1390378.png "屏幕截图.png")
