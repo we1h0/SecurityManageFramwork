@@ -17,10 +17,12 @@
 
 
 #### 软件架构
+
 后端系统 python3 + django2 + rabbitmq 实现。<br />
 前端显示 layui + bootstarp,使用开源模板 X-admin:http://x.xuebingsi.com/
 
 #### 项目特点
+
 -  可自定义用户类型及权限信息，初始化中生成安全人员，运维人员，网络人员和业务人员四种类型
 -  企业IT资产类型和资产属性可在后台自定义，根据需要进行扩展
 -  内网资产发现和端口扫描可自动化进行
@@ -37,20 +39,19 @@
 
 [安装手册](https://github.com/zhaoweiho/SecurityManageFramwork/tree/master/doc/install_zh.md)
 
-#### 使用说明
+#### 截图
 
-1. 资产管理模块,以下为管理员界面功能，其他类型用户根据定义的权限生成菜单和界面
-    <br>登录注册页</br>
+-    登录注册页
     ![登录注册页](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113258_154ca8d5_1390378.png "屏幕截图.png")
-    <br>系统首页</br>
+-    系统首页
     ![系统首页](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113454_07c46a58_1390378.png "屏幕截图.png")
-    <br>资产管理</br>
+-    资产管理
     ![资产管理](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113543_6a6973ec_1390378.png "屏幕截图.png")
-    <br>资产详情</br>
+-    资产详情
     ![资产详情](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/114021_ef591ca3_1390378.png "屏幕截图.png")
-    <br>漏洞管理</br>
+-    <br>漏洞管理</br>
     ![漏洞管理](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/113714_90826f30_1390378.png "屏幕截图.png")
-    <br>报表中心</br>
+-    报表中心
     ![报表中心](https://raw.githubusercontent.com/zhaoweiho/SecurityManageFramwork/master/doc/image/114106_3cf15048_1390378.png "屏幕截图.png")
     
 #### 参与贡献
