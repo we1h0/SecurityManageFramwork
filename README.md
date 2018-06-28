@@ -38,6 +38,7 @@
 #### 安装教程
 
 [安装指南](https://github.com/zhaoweiho/SecurityManageFramwork/blob/master/SeMF%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-2018-06-12.pdf)
+
 [使用指南](https://github.com/zhaoweiho/SecurityManageFramwork/blob/master/SeMF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-2018-06-20.pdf)
 
 #### 截图
