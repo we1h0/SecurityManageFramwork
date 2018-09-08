@@ -197,7 +197,7 @@ def initrole():
         {'title':'运维管理员','permissions':'资产列表'},
         {'title':'运维管理员','permissions':'漏洞列表'},
         {'title':'运维管理员','permissions':'漏洞库'},
-        {'title':'安全管理员','permissions':'任务列表'},
+        {'title':'运维管理员','permissions':'任务列表'},
         {'title':'运维管理员','permissions':'基础报表'},
         {'title':'运维管理员','permissions':'知识库'},
         
@@ -205,14 +205,14 @@ def initrole():
         {'title':'网络管理员','permissions':'映射列表'},
         {'title':'网络管理员','permissions':'漏洞列表'},
         {'title':'网络管理员','permissions':'漏洞库'},
-        {'title':'安全管理员','permissions':'任务列表'},
+        {'title':'网络管理员','permissions':'任务列表'},
         {'title':'网络管理员','permissions':'基础报表'},
         {'title':'网络管理员','permissions':'知识库'},
         
         {'title':'业务负责人','permissions':'资产列表'},
         {'title':'业务负责人','permissions':'漏洞列表'},
         {'title':'业务负责人','permissions':'漏洞库'},
-        {'title':'安全管理员','permissions':'任务列表'},
+        {'title':'业务负责人','permissions':'任务列表'},
         {'title':'业务负责人','permissions':'基础报表'},
         {'title':'业务负责人','permissions':'知识库'},
         ]

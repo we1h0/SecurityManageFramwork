@@ -56,6 +56,7 @@ def asset_request_list_action(request):
                     asset= get_object_or_404(models.Asset,asset_key = assetrequest.asset_key)
                     asset.asset_user.add(assetrequest.request_user)
                     asset.user_email = assetrequest.request_user.email
+                    asset.asset_inuse=True
                     asset.save()
                     assetrequest.save()
             error = '已审批'
