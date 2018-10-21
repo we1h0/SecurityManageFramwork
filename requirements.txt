@@ -1,7 +1,7 @@
 anyjson==0.3.3
 celery==4.1.1
 chardet==3.0.4
-Django==2.0.4
+django>=2.0.8
 PyMySQL==0.8.0
 python-nmap==0.6.1
 pytz==2018.4
