@@ -31,7 +31,7 @@ def scan_task(request,action='post'):
         for asset_id in asset_id_list:
             asset=Asset.objects.filter(asset_id=asset_id).first()
             if asset:
-                task_target = task_target + asset.asset_key +';'
+                task_target = task_target + asset.asset_key +','
         form = forms.TaskScanForm(initial={'task_target':task_target})
     elif request.method=='POST':
         form = forms.TaskScanForm(request.POST)
