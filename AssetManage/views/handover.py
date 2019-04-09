@@ -13,6 +13,7 @@ from NoticeManage.views import notice_add
 from django.http import JsonResponse
 from SeMFSetting.views import paging
 from django.db.models import Q
+from django.utils.html import escape
 
 REQUEST_STATUS={
     '0':'待审批',
@@ -90,12 +91,12 @@ def asset_handover_list(request):
         data = []
         for handover in handover_list:
             dic={}
-            dic['id']=handover.id
-            dic['request_user']=handover.request_user
-            dic['dst_email']=handover.dst_email
-            dic['reason']=handover.reason
-            dic['status']=REQUEST_STATUS[handover.status]
-            dic['request_updatetime']=handover.request_updatetime
+            dic['id']=escape(handover.id)
+            dic['request_user']=escape(handover.request_user)
+            dic['dst_email']=escape(handover.dst_email)
+            dic['reason']=escape(handover.reason)
+            dic['status']=escape(REQUEST_STATUS[handover.status])
+            dic['request_updatetime']=escape(handover.request_updatetime)
             data.append(dic)
         resultdict['code']=0
         resultdict['msg']="端口列表"

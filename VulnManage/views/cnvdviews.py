@@ -14,6 +14,7 @@ from django.db.models import Q
 from ..tasks import parse_cnvdxml
 from SeMF.settings import MEDIA_ROOT
 import os
+from django.utils.html import escape
 
 
 @login_required
@@ -109,12 +110,12 @@ def cnvdvulntablelist(request):
     data = []
     for vuln_item in vuln_list:
         dic={}
-        dic['id'] = vuln_item.id
-        dic['cve_id'] = vuln_item.cve_id
-        dic['cnvd_id'] = vuln_item.cnvd_id
-        dic['cve_name'] = vuln_item.cve_name
-        dic['leave'] = vuln_item.leave
-        dic['update_data'] = vuln_item.update_data
+        dic['id'] =escape( vuln_item.id)
+        dic['cve_id'] =escape( vuln_item.cve_id)
+        dic['cnvd_id'] =escape( vuln_item.cnvd_id)
+        dic['cve_name'] =escape( vuln_item.cve_name)
+        dic['leave'] =escape( vuln_item.leave)
+        dic['update_data'] =escape( vuln_item.update_data)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="漏洞列表"

@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from .. import models,forms
 from TaskManage.views.Scantasks import sys_action,web_action
 import time
+from django.utils.html import escape
 
 
 TASK_STATUS={
@@ -81,13 +82,13 @@ def taskrequesttablelist(request):
         data = []
         for item in task_list:
             dic={}
-            dic['task_id'] = item.task_id
-            dic['task_name'] = item.task_name
-            dic['task_type'] = item.task_type
-            dic['task_target'] = item.task_target
-            dic['task_starttime'] = item.task_starttime
-            dic['task_scanner'] = item.task_scanner.scanner_name
-            dic['task_user'] = item.task_user.email
+            dic['task_id'] =escape( item.task_id)
+            dic['task_name'] =escape( item.task_name)
+            dic['task_type'] =escape( item.task_type)
+            dic['task_target'] =escape( item.task_target)
+            dic['task_starttime'] =escape( item.task_starttime)
+            dic['task_scanner'] =escape( item.task_scanner.scanner_name)
+            dic['task_user'] =escape( item.task_user.email)
             data.append(dic)
         resultdict['code']=0
         resultdict['msg']="任务列表"
@@ -229,14 +230,14 @@ def tasktablelist(request):
     data = []
     for item in task_list:
         dic={}
-        dic['task_id'] = item.task_id
-        dic['task_name'] = item.task_name
-        dic['task_type'] = item.task_type
-        dic['task_target'] = item.task_target
-        dic['task_status'] = TASK_STATUS[item.task_status]
-        dic['task_starttime'] = item.task_starttime
-        dic['task_scanner'] = item.task_scanner.scanner_name
-        dic['task_user'] = item.task_user.email
+        dic['task_id'] =escape( item.task_id)
+        dic['task_name'] =escape( item.task_name)
+        dic['task_type'] =escape( item.task_type)
+        dic['task_target'] =escape( item.task_target)
+        dic['task_status'] =escape( TASK_STATUS[item.task_status])
+        dic['task_starttime'] =escape( item.task_starttime)
+        dic['task_scanner'] =escape( item.task_scanner.scanner_name)
+        dic['task_user'] =escape( item.task_user.email)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="任务列表"

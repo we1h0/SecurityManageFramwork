@@ -12,6 +12,7 @@ from SeMFSetting.views import paging
 from django.http import JsonResponse
 from . import models,forms
 from django.db.models import Q
+from django.utils.html import escape
 
 
 @login_required
@@ -149,22 +150,22 @@ def MappedTableList(request):
     data = []
     for item in mappedlist:
         dic={}
-        dic['id'] = item.id
-        dic['LANip'] = item.LANip.asset_key
-        dic['LANip_id'] = item.LANip.asset_id
-        dic['LANPort'] = item.LANPort.port
-        dic['WANip'] = item.WANip.asset_key
-        dic['WANip_id'] = item.WANip.asset_id
-        dic['WANPort'] = item.WANPort.port
-        dic['Domain'] = item.Domain
+        dic['id'] =escape( item.id)
+        dic['LANip'] =escape( item.LANip.asset_key)
+        dic['LANip_id'] =escape( item.LANip.asset_id)
+        dic['LANPort'] =escape( item.LANPort.port)
+        dic['WANip'] =escape( item.WANip.asset_key)
+        dic['WANip_id'] =escape( item.WANip.asset_id)
+        dic['WANPort'] =escape( item.WANPort.port)
+        dic['Domain'] =escape( item.Domain)
         if item.mapped_status:
-            dic['mapped_status'] = '使用中'
+            dic['mapped_status'] =escape( '使用中')
         else:
-            dic['mapped_status'] = '已禁用'
-        dic['start_time'] = item.start_time
-        dic['end_time'] = item.end_time
-        dic['request_email'] = item.request_email
-        dic['action_email'] = item.action_email
+            dic['mapped_status'] =escape( '已禁用')
+        dic['start_time'] =escape( item.start_time)
+        dic['end_time'] =escape( item.end_time)
+        dic['request_email'] =escape( item.request_email)
+        dic['action_email'] =escape( item.action_email)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="用户列表"

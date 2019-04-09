@@ -19,7 +19,7 @@ from ArticleManage.models import Article
 from AssetManage.models import Asset
 from VulnManage.models import Vulnerability,Vulnerability_scan
 from .service.init_permission import init_permission
-
+from django.utils.html import escape
 
 
 REAUEST_STATUS={
@@ -466,22 +466,22 @@ def userregisttable(request):
         data = []
         for userrequest in userrequest_list:
             dic={}
-            dic['request_id'] = userrequest.id
-            dic['email'] = userrequest.email
+            dic['request_id'] =escape( userrequest.id)
+            dic['email'] =escape( userrequest.email)
             if userrequest.is_check:
-                dic['is_check'] = '已审批'
-                dic['starttime'] = userrequest.starttime
+                dic['is_check'] =escape( '已审批')
+                dic['starttime'] =escape( userrequest.starttime)
                 if userrequest.action_user:
-                    dic['action_user'] = userrequest.action_user.username
-                dic['updatetime'] = userrequest.updatetime
+                    dic['action_user'] =escape( userrequest.action_user.username)
+                dic['updatetime'] =escape( userrequest.updatetime)
             else:
-                dic['is_check'] = '待审批'
+                dic['is_check'] =escape( '待审批')
             if userrequest.is_use:
-                dic['is_use'] = '已使用'
+                dic['is_use'] =escape( '已使用')
             else:
-                dic['is_use'] = '待使用'
-            dic['request_type'] = userrequest.request_type.title
-            dic['status'] = REAUEST_STATUS[userrequest.status]
+                dic['is_use'] =escape( '待使用')
+            dic['request_type'] =escape( userrequest.request_type.title)
+            dic['status'] =escape( REAUEST_STATUS[userrequest.status])
             data.append(dic)
         resultdict['code']=0
         resultdict['msg']="用户申请列表"

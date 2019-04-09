@@ -9,6 +9,7 @@ from SeMFSetting.views import paging
 from django.http import JsonResponse
 from RBAC.models import Area
 import json,time,random
+from django.utils.html import escape
 # Create your views here.
 ASSET_STATUS={
     '0':'使用中',
@@ -129,17 +130,17 @@ def assetreqeustlist(request):
     data = []
     for request_item in request_list:
         dic={}
-        dic['request_id'] = request_item.id
-        dic['asset_key'] = request_item.asset_key
-        dic['asset_type'] = request_item.asset_type.name
-        dic['asset_request_status'] = REQUEST_STATUS[request_item.asset_request_status]
-        dic['request_action'] = request_item.request_action
-        dic['request_user'] = request_item.request_user.username
-        dic['request_reason'] = request_item.request_reason
-        dic['request_starttime'] = request_item.request_starttime
+        dic['request_id'] = escape(request_item.id)
+        dic['asset_key'] = escape(request_item.asset_key)
+        dic['asset_type'] = escape(request_item.asset_type.name)
+        dic['asset_request_status'] = escape(REQUEST_STATUS[request_item.asset_request_status])
+        dic['request_action'] = escape(request_item.request_action)
+        dic['request_user'] = escape(request_item.request_user.username)
+        dic['request_reason'] = escape(request_item.request_reason)
+        dic['request_starttime'] = escape(request_item.request_starttime)
         if request_item.action_user:
-            dic['action_user'] = request_item.action_user.username
-            dic['request_updatetime'] = request_item.request_updatetime
+            dic['action_user'] = escape(request_item.action_user.username)
+            dic['request_updatetime'] = escape(request_item.request_updatetime)
         else:
             dic['action_user'] = ''
             dic['request_updatetime'] = ''
@@ -357,21 +358,21 @@ def assettablelist(request):
     data = []
     for asset_item in assetlist:
         dic={}
-        dic['asset_id'] = asset_item.asset_id
-        dic['asset_name'] = asset_item.asset_name
-        dic['asset_key'] = asset_item.asset_key
-        dic['asset_status'] = ASSET_STATUS[asset_item.asset_status]
+        dic['asset_id'] = escape( asset_item.asset_id)
+        dic['asset_name'] = escape( asset_item.asset_name)
+        dic['asset_key'] = escape( asset_item.asset_key)
+        dic['asset_status'] = escape( ASSET_STATUS[asset_item.asset_status])
         if asset_item.asset_inuse:
-            dic['asset_inuse'] = '已认领'
+            dic['asset_inuse'] = escape( '已认领')
         else:
-            dic['asset_inuse'] = '待认领'
+            dic['asset_inuse'] = escape( '待认领')
         if asset_item.asset_type:
-            dic['asset_type'] = asset_item.asset_type.name
+            dic['asset_type'] = escape( asset_item.asset_type.name)
         else:
-            dic['asset_type'] = '未分类'
-        dic['user_email'] = asset_item.user_email
-        dic['asset_score'] = asset_item.asset_score
-        dic['asset_updatetime'] = asset_item.asset_updatetime
+            dic['asset_type'] = escape( '未分类')
+        dic['user_email'] = escape( asset_item.user_email)
+        dic['asset_score'] = escape( asset_item.asset_score)
+        dic['asset_updatetime'] = escape( asset_item.asset_updatetime)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="用户列表"

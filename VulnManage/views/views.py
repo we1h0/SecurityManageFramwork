@@ -6,6 +6,7 @@ from .. import models,forms
 from SeMFSetting.views import paging
 from django.http import JsonResponse
 import time,json
+from django.utils.html import escape
 # Create your views here.
 
 VULN_LEAVE={
@@ -191,15 +192,15 @@ def vulntablelist(request):
     data = []
     for vuln_item in vuln_list:
         dic={}
-        dic['vuln_id'] = vuln_item.vuln_id
-        dic['cve_name'] = vuln_item.cve_name
-        dic['vuln_name'] = vuln_item.vuln_name
-        dic['vuln_type'] = vuln_item.vuln_type
-        dic['leave'] = VULN_LEAVE[vuln_item.leave]
-        dic['fix_status'] = VULN_STATUS[vuln_item.fix_status]
-        dic['update_data'] = vuln_item.update_data
-        dic['asset'] = vuln_item.vuln_asset.asset_key
-        dic['asset_id'] = vuln_item.vuln_asset.asset_id
+        dic['vuln_id'] =escape( vuln_item.vuln_id)
+        dic['cve_name'] =escape( vuln_item.cve_name)
+        dic['vuln_name'] =escape( vuln_item.vuln_name)
+        dic['vuln_type'] =escape( vuln_item.vuln_type)
+        dic['leave'] =escape( VULN_LEAVE[vuln_item.leave])
+        dic['fix_status'] =escape( VULN_STATUS[vuln_item.fix_status])
+        dic['update_data'] =escape( vuln_item.update_data)
+        dic['asset'] =escape( vuln_item.vuln_asset.asset_key)
+        dic['asset_id'] =escape( vuln_item.vuln_asset.asset_id)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="漏洞列表"

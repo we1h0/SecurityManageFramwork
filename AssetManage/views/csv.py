@@ -292,7 +292,7 @@ def create_csv_vuln(request):
     response['Content-Disposition'] = 'attachment;filename=asset_vuln.csv'
     
     writer = csv.writer(response)
-    headers = [u"资产标识",u"漏洞名称",u'CVE编号',u"危险等级0-5",u'影响范围',u"漏洞介绍",u'漏洞信息',u'修复建议']
+    headers = [u"资产标识",u"漏洞名称",u'CVE编号',u"危险等级0-4",u'影响范围',u"漏洞介绍",u'漏洞信息',u'修复建议']
     headers = [item for item in headers]
     writer.writerow(headers)
     

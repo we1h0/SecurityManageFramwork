@@ -12,6 +12,7 @@ from django.http import JsonResponse
 from SeMFSetting.views import paging
 from VulnManage.views.views import VULN_LEAVE,VULN_STATUS
 from django.db.models import Count
+from django.utils.html import escape
 
 
 ASSET_STATUS={
@@ -87,12 +88,12 @@ def asset_ports(request,asset_id):
     data = []
     for port in port_list:
         dic={}
-        dic['id']=port.id
-        dic['port']=port.port
-        dic['product']=port.product
-        dic['version']=port.version
-        dic['port_info']=port.port_info
-        dic['updatetime']=port.updatetime
+        dic['id']=escape(port.id)
+        dic['port']=escape(port.port)
+        dic['product']=escape(port.product)
+        dic['version']=escape(port.version)
+        dic['port_info']=escape(port.port_info)
+        dic['updatetime']=escape(port.updatetime)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="端口列表"
@@ -119,15 +120,15 @@ def asset_vuln(request,asset_id):
     data = []
     for vuln in vuln_list:
         dic={}
-        dic['vuln_id'] = vuln.vuln_id
-        dic['cve_name'] = vuln.cve_name
-        dic['vuln_name'] = vuln.vuln_name
-        dic['vuln_type'] = vuln.vuln_type
-        dic['leave'] = VULN_LEAVE[vuln.leave]
-        dic['fix_status'] = VULN_STATUS[vuln.fix_status]
-        dic['update_data'] = vuln.update_data
-        dic['asset'] = vuln.vuln_asset.asset_key
-        dic['asset_id'] = vuln.vuln_asset.asset_id
+        dic['vuln_id'] =escape(vuln.vuln_id)
+        dic['cve_name'] =escape(vuln.cve_name)
+        dic['vuln_name'] =escape(vuln.vuln_name)
+        dic['vuln_type'] =escape(vuln.vuln_type)
+        dic['leave'] =escape(VULN_LEAVE[vuln.leave])
+        dic['fix_status'] =escape(VULN_STATUS[vuln.fix_status])
+        dic['update_data'] =escape(vuln.update_data)
+        dic['asset'] =escape(vuln.vuln_asset.asset_key)
+        dic['asset_id'] =escape(vuln.vuln_asset.asset_id)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="端口列表"
@@ -155,11 +156,11 @@ def asset_plugin(request,asset_id):
     data = []
     for plugin in plugin_list:
         dic={}
-        dic['id']=plugin.id
-        dic['name']=plugin.name
-        dic['version']=plugin.version
-        dic['plugin_info']=plugin.plugin_info
-        dic['updatetime']=plugin.updatetime
+        dic['id']=escape(plugin.id)
+        dic['name']=escape(plugin.name)
+        dic['version']=escape(plugin.version)
+        dic['plugin_info']=escape(plugin.plugin_info)
+        dic['updatetime']=escape(plugin.updatetime)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="端口列表"
@@ -186,11 +187,11 @@ def asset_file(request,asset_id):
     data = []
     for file in file_list:
         dic={}
-        dic['id']=file.id
-        dic['name']=file.name
-        dic['file']= '/uploads/'+str(file.file)
-        dic['file_info']=file.file_info
-        dic['updatetime']=file.updatetime
+        dic['id']=escape(file.id)
+        dic['name']=escape(file.name)
+        dic['file']=escape( '/uploads/'+str(file.file))
+        dic['file_info']=escape(file.file_info)
+        dic['updatetime']=escape(file.updatetime)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="端口列表"
@@ -217,21 +218,21 @@ def asset_asset(request,asset_id):
     data = []
     for assetconnect in assetconnect_list:
         dic={}
-        dic['asset_id'] = assetconnect.asset_id
-        dic['asset_name'] = assetconnect.asset_name
-        dic['asset_key'] = assetconnect.asset_key
-        dic['asset_status'] = ASSET_STATUS[assetconnect.asset_status]
+        dic['asset_id'] =escape( assetconnect.asset_id)
+        dic['asset_name'] =escape( assetconnect.asset_name)
+        dic['asset_key'] =escape( assetconnect.asset_key)
+        dic['asset_status'] =escape( ASSET_STATUS[assetconnect.asset_status])
         if assetconnect.asset_inuse:
-            dic['asset_inuse'] = '已认领'
+            dic['asset_inuse'] =escape( '已认领')
         else:
-            dic['asset_inuse'] = '待认领'
+            dic['asset_inuse'] =escape( '待认领')
         if assetconnect.asset_type:
-            dic['asset_type'] = assetconnect.asset_type.name
+            dic['asset_type'] =escape( assetconnect.asset_type.name)
         else:
-            dic['asset_type'] = '未分类'
-        dic['user_email'] = assetconnect.user_email
-        dic['asset_score'] = assetconnect.asset_score
-        dic['asset_updatetime'] = assetconnect.asset_updatetime
+            dic['asset_type'] =escape( '未分类')
+        dic['user_email'] =escape( assetconnect.user_email)
+        dic['asset_score'] =escape( assetconnect.asset_score)
+        dic['asset_updatetime'] =escape( assetconnect.asset_updatetime)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="端口列表"

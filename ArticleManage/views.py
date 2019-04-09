@@ -13,6 +13,7 @@ from NoticeManage.views import notice_add
 from django.contrib.auth.models import User
 import time
 import uuid
+from django.utils.html import escape
 
 ARTICLE_STATUS={
     '0':'新建',
@@ -190,10 +191,7 @@ def articleablelist(request):
     status = request.POST.get('status')
     if  not status:
         status=''
-    
-    
-    
-    
+
     if user.is_superuser:
         article_list = models.Article.objects.filter(
             article_name__icontains = name,
@@ -213,12 +211,12 @@ def articleablelist(request):
     data = []
     for article_item in article_list:
         dic={}
-        dic['article_id'] = article_item.article_id
-        dic['article_name'] = article_item.article_name
-        dic['article_type'] = article_item.article_type.article_type_name
-        dic['article_updatetime'] = article_item.article_updatetime
-        dic['article_status'] = ARTICLE_STATUS[article_item.article_status]
-        dic['article_user'] = article_item.article_user.username
+        dic['article_id'] = escape(article_item.article_id)
+        dic['article_name'] = escape(article_item.article_name)
+        dic['article_type'] = escape(article_item.article_type.article_type_name)
+        dic['article_updatetime'] = escape(article_item.article_updatetime)
+        dic['article_status'] = escape(ARTICLE_STATUS[article_item.article_status])
+        dic['article_user'] = escape(article_item.article_user.username)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="知识共享"

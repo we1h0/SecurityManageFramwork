@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.http import JsonResponse
 from SeMFSetting.views import paging
 import json
+from django.utils.html import escape
 # Create your views here.
 
 @login_required
@@ -95,14 +96,14 @@ def notice_table_list(request):
     data = []
     for notice in notice_list:
         dic={}
-        dic['id'] = notice.id
-        dic['notice_title'] = notice.notice_title
-        dic['notice_body'] = notice.notice_body
+        dic['id'] =escape( notice.id)
+        dic['notice_title'] =escape( notice.notice_title)
+        dic['notice_body'] =escape( notice.notice_body)
         if notice.notice_status:
-            dic['notice_status'] = '已读'
+            dic['notice_status'] =escape( '已读')
         else:
-            dic['notice_status'] = '未读'
-        dic['notice_time'] = notice.notice_time
+            dic['notice_status'] =escape( '未读')
+        dic['notice_time'] =escape( notice.notice_time)
         data.append(dic)
     resultdict['code']=0
     resultdict['msg']="用户申请列表"
