@@ -29,7 +29,7 @@ def save_scan_vulns(scan_id,task_id):
         except:
             continue
         if res['info']['status'] == 'canceled' or res['info']['status'] == 'completed':
-            #time.sleep(600)
+            time.sleep(600)
             nessus.get_scan_vuln(scan_id,task,task.task_scanner.id)
             task.task_status=4
             task.save()
