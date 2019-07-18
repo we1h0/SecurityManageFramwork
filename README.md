@@ -6,7 +6,7 @@
 ### README English | [中文](README_CN.md)
 
 #### Introduction
-**SEMF**is a `security management platform'for enterprise intranet, which includes functions of asset management, vulnerability management, account management, knowledge base management and security scanning automation. It can be used for internal security management.
+**SEMF** is a `security management platform' for enterprise intranet, which includes functions of asset management, vulnerability management, account management, knowledge base management and security scanning automation. It can be used for internal security management.
 
 **This platform aims to help Party A with fewer security personnel, complicated business lines, difficult periodic inspection and low automation to better achieve internal safety management. This software is only used for internal IT asset management, no aggressive behavior. Users are requested to abide by the Network Security Law of the People's Republic of China (http://www.npc.gov.cn/npc/xinwen/2016-11/07/content_2001605.htm). They are not required to use SEMF for unauthorized testing. The authors are not liable for any joint and several legal responsibilities.**
 
