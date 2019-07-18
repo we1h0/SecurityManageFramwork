@@ -3,6 +3,7 @@
 [![Github License](https://img.shields.io/aur/license/yaourt.svg)](https://github.com/zhaoweiho/SecurityManageFramwork/blob/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/zhaoweiho/SecurityManageFramwork.svg)](https://github.com/zhaoweiho/SecurityManageFramwork/stargazers)
 
+### README English(doc/README.md) | [中文]
 
 #### 项目介绍
 **SEMF**是一款适用于企业内网`安全管理平台，包含资产管理，漏洞管理，账号管理，知识库管、安全扫描自动化功能模块，可用于企业内部的安全管理`。
