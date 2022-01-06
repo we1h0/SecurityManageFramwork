@@ -1,5 +1,5 @@
 anyjson==0.3.3
-celery==4.1.1
+celery==5.2.2
 chardet==3.0.4
 Django>=2.2.11
 PyMySQL==0.8.0
